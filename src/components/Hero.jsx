@@ -1,0 +1,237 @@
+export default function Hero() {
+  return (
+    <section className="bg-gradient-to-br from-sky-50 via-white to-blue-100">
+
+      <div className="max-w-7xl mx-auto px-6 py-20">
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+
+          {/* Left Side */}
+
+          <div>
+
+            <span className="bg-sky-100 text-sky-600 px-4 py-2 rounded-full text-sm font-medium">
+
+              ♻ Sustainable Marketplace
+
+            </span>
+
+
+
+            <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
+
+              Buy & Sell
+
+              <span className="text-sky-500">
+
+                {" "}Pre-Owned
+
+              </span>
+
+              Products
+
+
+              <br />
+
+              With Confidence
+
+
+            </h1>
+
+
+
+
+            <p className="text-gray-600 mt-6 leading-8">
+
+
+              Discover affordable second-hand products,
+
+              connect with trusted sellers,
+
+              and contribute to a greener future.
+
+
+
+            </p>
+
+
+
+
+
+            <div className="flex gap-4 mt-8">
+
+
+              <button className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-xl">
+
+
+                Explore Products
+
+
+              </button>
+
+
+
+
+              <button className="border border-sky-500 text-sky-500 px-6 py-3 rounded-xl hover:bg-sky-50">
+
+
+                Start Selling
+
+
+              </button>
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+          {/* Right Side */}
+
+          <div>
+
+
+            <img
+
+              src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=1000"
+
+              alt="Hero"
+
+              className="rounded-3xl shadow-xl"
+
+            />
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+        {/* Statistics */}
+
+
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+
+
+
+
+
+          <div className="bg-white rounded-xl shadow p-6 text-center">
+
+
+            <h2 className="text-3xl font-bold text-sky-500">
+
+              5K+
+
+            </h2>
+
+
+            <p>
+
+              Products
+
+            </p>
+
+
+          </div>
+
+
+
+
+
+
+          <div className="bg-white rounded-xl shadow p-6 text-center">
+
+
+            <h2 className="text-3xl font-bold text-sky-500">
+
+              2K+
+
+            </h2>
+
+
+            <p>
+
+              Sellers
+
+            </p>
+
+
+          </div>
+
+
+
+
+
+
+          <div className="bg-white rounded-xl shadow p-6 text-center">
+
+
+            <h2 className="text-3xl font-bold text-sky-500">
+
+              10K+
+
+            </h2>
+
+
+            <p>
+
+              Buyers
+
+            </p>
+
+
+          </div>
+
+
+
+
+
+
+          <div className="bg-white rounded-xl shadow p-6 text-center">
+
+
+            <h2 className="text-3xl font-bold text-sky-500">
+
+              25K+
+
+            </h2>
+
+
+            <p>
+
+              Completed Orders
+
+            </p>
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+      </div>
+
+    </section>
+  );
+}
