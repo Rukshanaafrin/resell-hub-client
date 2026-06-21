@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-br from-sky-50 via-white to-blue-100">
+    <section className="bg-gradient-to-br from-sky-50 via-white to-blue-100 dark:from-slate-900 dark-via-slate-950 dark:to-slate-900">
 
       <div className="max-w-7xl mx-auto px-6 py-20">
 
@@ -19,7 +19,7 @@ export default function Hero() {
 
 
 
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
+            <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6 text-slate-900 dark:text-white">
 
               Buy & Sell
 
@@ -42,7 +42,7 @@ export default function Hero() {
 
 
 
-            <p className="text-gray-600 mt-6 leading-8">
+            <p className="text-gray-600 dark:text-slate-300 mt-6 leading-8">
 
 
               Discover affordable second-hand products,
@@ -132,7 +132,7 @@ export default function Hero() {
 
 
 
-          <div className="bg-white rounded-xl shadow p-6 text-center">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-6 text-center">
 
 
             <h2 className="text-3xl font-bold text-sky-500">
@@ -142,7 +142,7 @@ export default function Hero() {
             </h2>
 
 
-            <p>
+            <p className="text-slate-700 dark:text-white">
 
               Products
 
@@ -156,7 +156,7 @@ export default function Hero() {
 
 
 
-          <div className="bg-white rounded-xl shadow p-6 text-center">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-6 text-center">
 
 
             <h2 className="text-3xl font-bold text-sky-500">
@@ -166,7 +166,7 @@ export default function Hero() {
             </h2>
 
 
-            <p>
+            <p className="text-slate-700 dark:text-white">
 
               Sellers
 
@@ -180,7 +180,7 @@ export default function Hero() {
 
 
 
-          <div className="bg-white rounded-xl shadow p-6 text-center">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-6 text-center">
 
 
             <h2 className="text-3xl font-bold text-sky-500">
@@ -190,7 +190,7 @@ export default function Hero() {
             </h2>
 
 
-            <p>
+            <p className="text-slate-700 dark:text-white">
 
               Buyers
 
@@ -204,7 +204,7 @@ export default function Hero() {
 
 
 
-          <div className="bg-white rounded-xl shadow p-6 text-center">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-6 text-center">
 
 
             <h2 className="text-3xl font-bold text-sky-500">
@@ -214,7 +214,7 @@ export default function Hero() {
             </h2>
 
 
-            <p>
+            <p className="text-slate-700 dark:text-white">
 
               Completed Orders
 

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { Sun } from "lucide-react";
 
 import {
     Home,
@@ -15,48 +18,84 @@ import {
     Settings,
     ShoppingBag,
     LogOut,
+    Menu,
+    X,
 } from "lucide-react";
 
 export default function Navbar() {
+
     const pathname = usePathname();
 
+
     const [open, setOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const { theme, setTheme } = useTheme();
+
 
     const links = [
+
         {
             name: "Home",
             href: "/",
             icon: <Home size={18} />,
         },
+
         {
             name: "Products",
             href: "/products",
             icon: <Package size={18} />,
         },
+
         {
             name: "Categories",
             href: "/categories",
             icon: <Folder size={18} />,
         },
+
         {
             name: "Dashboard",
             href: "/dashboard",
             icon: <LayoutDashboard size={18} />,
         },
+
     ];
 
+
     return (
-        <nav className="border-b bg-white shadow-sm">
+
+        <nav className="sticky top-0 z-50 border-b border-slate-800 bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 backdrop-blur-md shadow-md">
 
             <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
 
                 {/* Logo */}
 
-                <Link href="/">
+                <Link
+                    href="/"
+                    className="flex items-center gap-3"
+                >
 
-                    <h2 className="text-2xl font-bold text-sky-600">
+                    <Image
+                        src="/logo.png"
+                        width={30}
+                        height={30}
+                        className="rounded-md"
+                        alt="logo"
+                    />
 
-                        ReSell Hub
+                    <h2 className="text-2xl font-bold">
+
+                        <span className="text-cyan-400">
+
+                            ReSell
+
+                        </span>
+
+                        <span className="text-white">
+
+                            Hub
+
+                        </span>
 
                     </h2>
 
@@ -64,46 +103,42 @@ export default function Navbar() {
 
 
 
-                {/* Center */}
+                {/* Desktop Menu */}
 
                 <div className="hidden md:flex items-center gap-8">
 
-                    {links.map((link) => (
+                    {
 
-                        <Link
-                            key={link.href}
-                            href={link.href}
+                        links.map((link) => (
 
-                            className={`flex items-center gap-2 pb-1 transition-all
+                            <Link
+                                key={link.href}
+                                href={link.href}
 
-
-              ${pathname === link.href
-
-
-                                    ? "text-sky-600 border-b-2 border-sky-600"
+                                className={`flex items-center gap-2 pb-1 transition
 
 
-                                    : "text-gray-700 hover:text-sky-600"
-
-                                }
+                                ${pathname === link.href
 
 
-
-              `}
-
-                        >
+                                        ? "text-purple-400 border-b-2 border-purple-400"
 
 
-                            {link.icon}
+                                        : "text-gray-300 hover:text-purple-400"
+                                    }
 
+                                `}
+                            >
 
-                            {link.name}
+                                {link.icon}
 
+                                {link.name}
 
+                            </Link>
 
-                        </Link>
+                        ))
 
-                    ))}
+                    }
 
                 </div>
 
@@ -111,98 +146,144 @@ export default function Navbar() {
 
 
 
-
-                {/* Right Side */}
-
+                {/* Right */}
 
                 <div className="flex items-center gap-4">
 
 
-
                     {/* Theme */}
 
-
                     <button
 
 
-                        className="hover:text-sky-600"
+                        onClick={() => {
+
+
+                            setTheme(
+
+                                theme === "dark"
+
+                                    ?
+
+                                    "light"
+
+                                    :
+
+                                    "dark"
+
+                            )
+
+                        }}
+
+
+
+                        className="text-cyan-400 hover:scale-110 duration-300"
+
 
                     >
 
 
-                        <Moon size={20} />
+                        {
+
+                            theme === "dark"
+
+                                ?
+
+                                <Sun size={20} />
+
+                                :
+
+                                <Moon size={20} />
+
+                        }
 
 
                     </button>
 
 
 
+                    {/* Desktop Login */}
 
+                    <div className="hidden md:flex gap-2">
 
-                    {/* Login */}
+                        <Link
+                            href="/login"
+                            className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
+                                ? "bg-purple-600 text-white"
+                                : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                }
+                                `}
+                        >
 
+                            Login
 
-
-                    <button
-
-
-                        className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-lg"
-
-                    >
-
-
-                        Login / Register
-
-
-                    </button>
-
+                        </Link>
 
 
 
+                        <Link
+                            href="/register"
+                            className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
+                                    ? "bg-purple-600 text-white"
+                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                }
+                                `}
+                        >
 
-                    {/* Dropdown */}
+                            Register
+
+                        </Link>
+
+
+                    </div>
 
 
 
-                    <div className="relative">
 
 
+                    {/* Profile */}
+
+                    <div className="hidden md:block relative">
 
                         <button
 
-
                             onClick={() => setOpen(!open)}
-
 
                             className="flex items-center gap-2"
 
                         >
 
 
-                            <img
+                            <Image
 
+                                src="/profile.jpg"
 
-                                src="https://i.pravatar.cc/150?img=12"
+                                width={40}
 
+                                height={40}
 
-                                className="w-10 h-10 rounded-full"
+                                alt="profile"
 
-
-                                alt=""
+                                className="rounded-full object-cover w-10 h-10 border-2 border-cyan-400"
 
                             />
 
 
 
-                            <span>
+                            <span className="text-white">
 
-                                Sarah J.
+                                Afrin
 
                             </span>
 
 
+                            <ChevronDown
 
-                            <ChevronDown size={18} />
+                                size={18}
+
+                                className="text-white"
+
+                            />
 
 
 
@@ -210,64 +291,45 @@ export default function Navbar() {
 
 
 
-
-
                         {
 
                             open && (
 
-
-
-                                <div
-
-
-                                    className="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-lg border z-50"
-
-                                >
+                                <div className="absolute right-0 mt-3 w-56 bg-slate-900 rounded-xl shadow-lg border border-slate-700 z-50">
 
 
 
 
                                     <Link
 
-
                                         href="/profile"
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100"
+                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 
                                     >
-
-
 
                                         <User size={16} />
 
                                         My Profile
 
-
                                     </Link>
-
-
 
 
 
 
                                     <Link
 
-
                                         href="/settings"
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100"
+                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 
                                     >
-
 
                                         <Settings size={16} />
 
                                         Settings
 
-
                                     </Link>
-
 
 
 
@@ -275,21 +337,17 @@ export default function Navbar() {
 
                                     <Link
 
-
                                         href="/orders"
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-gray-100"
+                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 
                                     >
-
 
                                         <ShoppingBag size={16} />
 
                                         Orders
 
-
                                     </Link>
-
 
 
 
@@ -297,33 +355,52 @@ export default function Navbar() {
 
                                     <button
 
-
-                                        className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-100 text-red-500"
+                                        className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-900 text-red-400"
 
                                     >
-
 
                                         <LogOut size={16} />
 
                                         Logout
 
-
                                     </button>
-
-
 
 
                                 </div>
 
-
                             )
-
 
                         }
 
-
-
                     </div>
+
+
+
+                    {/* Mobile Menu */}
+
+                    <button
+
+                        onClick={() => setMenuOpen(!menuOpen)}
+
+                        className="md:hidden text-white"
+
+                    >
+
+                        {
+
+                            menuOpen
+
+                                ?
+
+                                <X size={24} />
+
+                                :
+
+                                <Menu size={24} />
+
+                        }
+
+                    </button>
 
 
 
@@ -331,9 +408,90 @@ export default function Navbar() {
 
 
 
-
             </div>
 
+
+
+
+            {/* Mobile Drawer */}
+
+
+            {
+
+                menuOpen && (
+
+
+                    <div className="md:hidden bg-slate-900 px-5 pb-5">
+
+
+
+                        <div className="flex flex-col gap-4">
+
+
+
+                            {
+
+                                links.map((link) => (
+
+
+                                    <Link
+
+                                        key={link.href}
+
+                                        href={link.href}
+
+                                        className="text-gray-300"
+
+
+                                    >
+
+                                        {link.name}
+
+                                    </Link>
+
+                                ))
+
+                            }
+
+
+
+                            <Link
+                                href="/login"
+                                className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
+                                    ? "bg-purple-600 text-white"
+                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                    }
+                                    `}
+                            >
+                                Login
+                            </Link>
+
+
+
+                            <Link
+                                href="/register"
+                                className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
+                                    ? "bg-purple-600 text-white"
+                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                    }
+                                    `}
+                            >
+                                Register
+                            </Link>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                )
+
+            }
+
+
         </nav>
+
     );
 }

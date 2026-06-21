@@ -1,4 +1,17 @@
 @import "tailwindcss";
-@import "@heroui/styles";
-@plugin "daisyui"
+/* @import "@heroui/styles"; */
+@plugin "daisyui";
 
+html{
+  transition: all .3s ease;
+}
+
+html.dark{
+  background:#0f172a;
+  color:white;
+}
+
+html:not(.dark){
+  background:white;
+  color:black;
+}
