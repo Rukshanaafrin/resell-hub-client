@@ -23,7 +23,7 @@ const categories = [
   {
     name: "Vehicles",
     icon: Car,
-    total: "90+ Products",
+    total: "92+ Products",
   },
   {
     name: "Fashion",
