@@ -6,6 +6,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Sun } from "lucide-react";
+import { useSession, authClient } from "@/lib/auth-client";
 
 import {
     Home,
@@ -25,6 +26,8 @@ import {
 export default function Navbar() {
 
     const pathname = usePathname();
+
+    const { data: session } = useSession();
 
 
     const [open, setOpen] = useState(false);
@@ -204,38 +207,45 @@ export default function Navbar() {
 
                     {/* Desktop Login */}
 
-                    <div className="hidden md:flex gap-2">
+                    {
+                        !session ? (
 
-                        <Link
-                            href="/login"
-                            className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
-                                ? "bg-purple-600 text-white"
-                                : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
-                                }
-                                `}
-                        >
+                            <div className="hidden md:flex gap-2">
 
-                            Login
+                                <Link
+                                    href="/login"
+                                    className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
+                                        ? "bg-purple-600 text-white"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        }`}
+                                >
 
-                        </Link>
+                                    Login
 
-
-
-                        <Link
-                            href="/register"
-                            className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
-                                    ? "bg-purple-600 text-white"
-                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
-                                }
-                                `}
-                        >
-
-                            Register
-
-                        </Link>
+                                </Link>
 
 
-                    </div>
+                                <Link
+                                    href="/register"
+                                    className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
+                                        ? "bg-purple-600 text-white"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        }`}
+                                >
+
+                                    Register
+
+                                </Link>
+
+                            </div>
+
+                        )
+
+                            :
+
+                            null
+
+                    }
 
 
 
@@ -243,136 +253,136 @@ export default function Navbar() {
 
                     {/* Profile */}
 
-                    <div className="hidden md:block relative">
+                    {
+                        session && (
 
-                        <button
+                            <div className="hidden md:block relative">
 
-                            onClick={() => setOpen(!open)}
 
-                            className="flex items-center gap-2"
+                                <button
 
-                        >
+                                    onClick={() => setOpen(!open)}
 
+                                    className="flex items-center gap-2"
 
-                            <Image
+                                >
 
-                                src="/profile.jpg"
 
-                                width={40}
+                                    <Image
 
-                                height={40}
+                                        src={session.user.image || "/profile.jpg"}
 
-                                alt="profile"
+                                        width={40}
 
-                                className="rounded-full object-cover w-10 h-10 border-2 border-cyan-400"
+                                        height={40}
 
-                            />
+                                        alt="profile"
 
+                                        className="rounded-full object-cover w-10 h-10 border-2 border-cyan-400"
 
+                                    />
 
-                            <span className="text-white">
 
-                                Afrin
 
-                            </span>
+                                    <span className="text-white">
 
+                                        {session.user.name}
 
-                            <ChevronDown
+                                    </span>
 
-                                size={18}
 
-                                className="text-white"
 
-                            />
+                                    <ChevronDown
+                                        size={18}
+                                        className="text-white"
+                                    />
 
+                                </button>
 
 
-                        </button>
 
+                                {
 
 
-                        {
+                                    open && (
 
-                            open && (
 
-                                <div className="absolute right-0 mt-3 w-56 bg-slate-900 rounded-xl shadow-lg border border-slate-700 z-50">
+                                        <div className="absolute right-0 mt-3 w-56 bg-slate-900 rounded-xl shadow-lg border border-slate-700 z-50">
 
 
+                                            <Link
 
+                                                href="/profile"
 
-                                    <Link
+                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 
-                                        href="/profile"
+                                            >
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                <User size={16} />
 
-                                    >
+                                                My Profile
 
-                                        <User size={16} />
+                                            </Link>
 
-                                        My Profile
 
-                                    </Link>
 
 
+                                            <Link
 
+                                                href="/dashboard"
 
-                                    <Link
+                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 
-                                        href="/settings"
+                                            >
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                <LayoutDashboard size={16} />
 
-                                    >
+                                                Dashboard
 
-                                        <Settings size={16} />
+                                            </Link>
 
-                                        Settings
 
-                                    </Link>
 
 
+                                            <button
 
 
+                                                onClick={async () => {
 
-                                    <Link
 
-                                        href="/orders"
+                                                    await authClient.signOut()
 
-                                        className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                  
 
-                                    >
 
-                                        <ShoppingBag size={16} />
+                                                }}
 
-                                        Orders
 
-                                    </Link>
+                                                className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-900 text-red-400"
 
+                                            >
 
 
+                                                <LogOut size={16} />
 
+                                                Logout
 
-                                    <button
 
-                                        className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-900 text-red-400"
+                                            </button>
 
-                                    >
+                                        </div>
 
-                                        <LogOut size={16} />
 
-                                        Logout
+                                    )
 
-                                    </button>
+                                }
 
 
-                                </div>
+                            </div>
 
-                            )
+                        )
 
-                        }
-
-                    </div>
+                    }
 
 
 

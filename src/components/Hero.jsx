@@ -1,6 +1,7 @@
+"use client";
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-br from-sky-50 via-white to-blue-100 dark:from-slate-900 dark-via-slate-950 dark:to-slate-900">
+    <section>
 
       <div className="max-w-7xl mx-auto px-6 py-20">
 
@@ -19,27 +20,27 @@ export default function Hero() {
 
 
 
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6 text-slate-900 dark:text-white">
+            <h1 className="mt-6 text-5xl lg:text-6xl font-bold leading-tight">
 
-              Buy & Sell
-
-              <span className="text-sky-500">
-
-                {" "}Pre-Owned
-
+              <span className="text-violet-600">
+                Buy & Sell
               </span>
 
-              Products
+              <span className="text-sky-500">
+                {" "}Pre-Owned
+              </span>
 
+              <span className="text-violet-600">
+                Products
+              </span>
 
               <br />
 
-              With Confidence
-
+              <span className="text-violet-600">
+                With Confidence
+              </span>
 
             </h1>
-
-
 
 
             <p className="text-gray-600 dark:text-slate-300 mt-6 leading-8">

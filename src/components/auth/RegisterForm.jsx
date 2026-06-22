@@ -1,35 +1,282 @@
 "use client";
 
-export default function RegisterForm() {
-  return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-purple-500/20 bg-[#171722]">
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
-        {/* Left */}
-        <div className="hidden lg:flex flex-col justify-center p-12 bg-gradient-to-br from-purple-900 to-black">
+export default function RegisterForm() {
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+
+    const form = e.target;
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const location = form.location.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
+    try {
+
+      await authClient.signUp.email({
+        email,
+        password,
+        name,
+      });
+
+      alert("Account Created Successfully");
+
+      router.push("/");
+
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    }
+
+    setLoading(false);
+  };
+
+
+
+  const handleGoogle = async () => {
+
+    // Google signup later
+
+  };
+
+
+
+  return (
+
+    <section className="flex items-center justify-center px-4 py-6 bg-[#0F172A]">
+
+
+      <div className="w-full max-w-4xl max-auto mb-16 grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-purple-500/20 bg-[#171722] shadow-xl">
+
+
+
+        {/* Left Side */}
+
+
+        <div className="hidden lg:flex flex-col justify-center p-8 bg-gradient-to-br from-purple-900 to-black">
+
           <h1 className="text-5xl font-bold text-white">
+
             ReSell Hub
+
           </h1>
 
-          <p className="mt-5 text-gray-300">
+          <p className="mt-5 text-gray-300 leading-8">
+
             Buy, Sell and Reuse Products Easily.
+            Join thousands of users making smart purchases.
+
           </p>
+
         </div>
 
-        {/* Right */}
-        <div className="p-6 md:p-10">
+
+
+
+
+
+        {/* Right Side */}
+
+
+
+        <div className="p-5">
 
           <h2 className="text-3xl font-bold text-white">
+
             Create Account
+
           </h2>
 
+
           <p className="mt-2 text-gray-400">
+
             Join the marketplace today
+
           </p>
+
+
+
+          <form
+            onSubmit={handleRegister}
+            className="mt-5 space-y-2"
+          >
+
+
+
+            <input
+              name="name"
+              type="text"
+              placeholder="Full Name"
+              required
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              required
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+            <input
+              name="location"
+              type="text"
+              placeholder="Location"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+
+            <input
+              name="photo"
+              type="text"
+              placeholder="Photo URL"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+
+
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              required
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+
+            <input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              required
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            />
+
+
+
+
+            {error && (
+
+              <p className="text-red-500 text-sm">
+
+                {error}
+
+              </p>
+
+            )}
+
+
+
+
+
+            <button
+              disabled={loading}
+              className="w-full bg-purple-600 hover:bg-purple-700 h-10 rounded-xl text-white font-semibold"
+            >
+
+              {
+
+                loading
+
+                  ?
+
+                  "Creating..."
+
+                  :
+
+                  "Create Account"
+
+              }
+
+            </button>
+
+
+
+
+
+
+            <button
+              type="button"
+              onClick={handleGoogle}
+              className="w-full border border-purple-500 h-10 rounded-xl text-purple-300 hover:bg-purple-500 hover:text-white transition"
+            >
+
+              Continue with Google
+
+            </button>
+
+
+
+
+
+            <p className="text-center text-gray-400">
+
+
+              Already have an account?
+
+
+
+              <Link
+
+                href="/login"
+
+                className="text-purple-400 ml-2"
+
+              >
+
+                Login
+
+              </Link>
+
+
+            </p>
+
+
+
+          </form>
+
+
 
         </div>
 
+
+
       </div>
+
+
     </section>
+
   );
+
 }
