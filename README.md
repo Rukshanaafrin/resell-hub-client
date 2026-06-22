@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ReSellHub
 
-## Getting Started
+## Project Purpose
 
-First, run the development server:
+ReSellHub is a modern second-hand marketplace platform designed to help users buy and sell pre-owned products safely and efficiently. The platform promotes sustainable consumption, reduces waste, creates earning opportunities for sellers, and provides affordable shopping experiences for buyers.
+
+---
+
+## Live URL
+
+🔗 
+
+---
+
+## Key Features
+
+### Authentication System
+
+* Email & Password Authentication
+* Google Sign-In
+* Secure Logout
+* JWT Authentication
+* Protected Routes
+* Role-Based Authorization
+
+### Marketplace Features
+
+* Featured Products Section
+* Dynamic Categories Section
+* Product Details Page
+* Related Products
+* Product Search
+* Price Sorting
+* Pagination
+* Wishlist System
+* Product Reporting System
+
+### Dashboard Features
+
+#### Buyer Dashboard
+
+* Dashboard Overview
+* My Orders
+* Wishlist
+* Payment History
+* Profile Management
+
+#### Seller Dashboard
+
+* Add Product
+* My Products
+* Manage Orders
+* Sales Analytics
+
+#### Admin Dashboard
+
+* Manage Users
+* Manage Products
+* Manage Orders
+* Platform Analytics
+
+### Payment System
+
+* Stripe Payment Integration
+* Secure Checkout
+* Payment Success Page
+* Payment History
+
+### Additional Features
+
+* Dark / Light Theme Toggle
+* Seller Verification Badge
+* Sustainability Section
+* Trusted Sellers Section
+* Success Stories Section
+* Responsive Design
+* Framer Motion Animations
+
+---
+
+## NPM Packages Used
+
+### Frontend Packages
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+next
+react
+tailwindcss
+daisyui
+firebase
+axios
+react-hot-toast
+framer-motion
+react-icons
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Backend Packages
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+express
+mongodb
+cors
+dotenv
+cookie-parser
+jsonwebtoken
+stripe
+nodemon
+```
