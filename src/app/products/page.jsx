@@ -7,6 +7,10 @@ import Link from "next/link";
 export default function ProductsPage() {
 
     const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
+
+    const [search, setSearch] = useState("");
+    const [sort, setSort] = useState("");
 
     const searchParams = useSearchParams();
 
@@ -28,12 +32,77 @@ export default function ProductsPage() {
 
 
         fetch(url)
-            .then(res => res.json())
-            .then(data => setProducts(data));
 
+            .then(res => res.json())
+
+            .then(data => {
+
+
+                setAllProducts(data);
+
+                setProducts(data);
+
+
+            })
 
 
     }, [category]);
+
+
+
+
+
+
+    useEffect(() => {
+
+
+        let filtered = [...allProducts];
+
+
+
+        if (search) {
+
+            filtered = filtered.filter(item =>
+
+                item.title.toLowerCase()
+
+                    .includes(search.toLowerCase())
+
+            )
+
+        }
+
+
+
+
+        if (sort === "low") {
+
+
+            filtered.sort((a, b) => a.price - b.price);
+
+        }
+
+
+
+
+        if (sort === "high") {
+
+
+            filtered.sort((a, b) => b.price - a.price);
+
+
+        }
+
+
+
+
+        setProducts(filtered);
+
+
+
+    }, [search, sort, allProducts]);
+
+
 
 
 
@@ -51,21 +120,109 @@ export default function ProductsPage() {
 
 
             {
+
+
                 category && (
 
-                    <p className="text-center text-cyan-500 mb-10">
+
+                    <p className="text-center text-cyan-500 mb-8">
+
 
                         Showing : {category}
 
+
                     </p>
 
+
                 )
+
+
             }
 
 
 
 
+            <div className="flex flex-col md:flex-row gap-4 mb-10">
+
+
+
+                <input
+
+
+                    type="text"
+
+                    placeholder="Search Product"
+
+
+                    className="input input-bordered w-full"
+
+
+                    onChange={(e) =>
+
+                        setSearch(e.target.value)
+
+                    }
+
+
+                />
+
+
+
+
+
+                <select
+
+
+                    className="select select-bordered"
+
+
+                    onChange={(e) =>
+
+                        setSort(e.target.value)
+
+                    }
+
+                >
+
+
+                    <option>
+
+                        Sort
+
+                    </option>
+
+
+
+                    <option value="low">
+
+                        Low to High
+
+                    </option>
+
+
+
+
+                    <option value="high">
+
+                        High to Low
+
+                    </option>
+
+
+
+                </select>
+
+
+
+            </div>
+
+
+
+
+
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
 
 
                 {
@@ -82,21 +239,31 @@ export default function ProductsPage() {
                         >
 
 
+
                             <figure>
+
+
 
                                 <img
 
+
                                     src={product.images?.[0]}
+
 
                                     className="h-60 w-full object-cover"
 
                                 />
 
+
+
                             </figure>
 
 
 
+
                             <div className="card-body">
+
+
 
 
                                 <h2 className="card-title">
@@ -107,7 +274,8 @@ export default function ProductsPage() {
 
 
 
-                                <p>
+                                <p className="font-semibold">
+
 
                                     ৳ {product.price}
 
@@ -115,34 +283,55 @@ export default function ProductsPage() {
 
 
 
+
+
                                 <div className="card-actions justify-end">
+
 
 
                                     <Link
 
+
                                         href={`/products/${product._id}`}
+
+
 
                                         className="btn btn-info"
 
+
+
                                     >
+
+
 
                                         Details
 
+
+
                                     </Link>
+
+
 
 
                                 </div>
 
 
+
+
+
                             </div>
+
 
 
                         </div>
 
 
+
                     ))
 
+
                 }
+
 
 
             </div>
