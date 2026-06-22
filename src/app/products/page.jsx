@@ -1,20 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function ProductsPage() {
 
     const [products, setProducts] = useState([]);
 
+    const searchParams = useSearchParams();
+
+    const category = searchParams.get("category");
+
+
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/featured-products")
+        let url = "http://localhost:5000/products";
+
+
+        if (category) {
+
+            url += `?category=${category}`;
+
+        }
+
+
+
+        fetch(url)
             .then(res => res.json())
             .then(data => setProducts(data));
 
-    }, []);
+
+
+    }, [category]);
 
 
 
@@ -23,15 +42,31 @@ export default function ProductsPage() {
 
         <section className="max-w-7xl mx-auto py-16 px-6">
 
-            <h1 className="text-5xl font-bold text-center mb-12">
+
+            <h1 className="text-5xl font-bold text-center mb-4">
 
                 All Products
 
             </h1>
 
 
+            {
+                category && (
+
+                    <p className="text-center text-cyan-500 mb-10">
+
+                        Showing : {category}
+
+                    </p>
+
+                )
+            }
+
+
+
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
 
                 {
 
@@ -39,16 +74,22 @@ export default function ProductsPage() {
 
 
                         <div
+
                             key={product._id}
+
                             className="card bg-base-100 shadow-xl"
+
                         >
 
 
                             <figure>
 
                                 <img
+
                                     src={product.images?.[0]}
+
                                     className="h-60 w-full object-cover"
+
                                 />
 
                             </figure>
@@ -65,6 +106,7 @@ export default function ProductsPage() {
                                 </h2>
 
 
+
                                 <p>
 
                                     ৳ {product.price}
@@ -72,12 +114,16 @@ export default function ProductsPage() {
                                 </p>
 
 
+
                                 <div className="card-actions justify-end">
 
 
                                     <Link
+
                                         href={`/products/${product._id}`}
+
                                         className="btn btn-info"
+
                                     >
 
                                         Details
@@ -87,7 +133,9 @@ export default function ProductsPage() {
 
                                 </div>
 
+
                             </div>
+
 
                         </div>
 
@@ -96,7 +144,10 @@ export default function ProductsPage() {
 
                 }
 
+
             </div>
+
+
 
         </section>
 
