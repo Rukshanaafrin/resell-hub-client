@@ -2,101 +2,123 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FeaturedProducts() {
 
-const [products,setProducts]=useState([]);
+  const [products, setProducts] = useState([]);
 
-useEffect(()=>{
+  useEffect(() => {
 
-fetch("http://localhost:5000/featured-products")
-.then(res=>res.json())
-.then(data=>setProducts(data));
+    fetch("http://localhost:5000/featured-products")
+      .then(res => res.json())
+      .then(data => setProducts(data));
 
-},[]);
-
-
-return(
-
-<section className="max-w-7xl mx-auto py-20">
-
-<h2 className="text-4xl font-bold text-center mb-12">
-
-Featured Products
-
-</h2>
+  }, []);
 
 
-<div className="grid md:grid-cols-4 gap-6">
+  return (
+
+    <section className="max-w-7xl mx-auto py-20 px-4">
+
+      <h2 className="text-4xl font-bold text-center mb-12">
+
+        Featured Products
+
+      </h2>
 
 
-{
-
-products.map(product=>(
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
 
-<div
-key={product._id}
-className="bg-white rounded-xl shadow-md overflow-hidden"
->
+        {
+
+          products.map(product => (
+
+            <div
+
+              key={product._id}
+
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+
+            >
 
 
-<Image
-src={product.images[0]}
-width={400}
-height={250}
-alt={product.title}
-className="w-full h-52 object-cover"
-/>
+              <Image
+
+                src={product.images[0]}
+
+                width={400}
+
+                height={250}
+
+                alt={product.title}
+
+                className="w-full h-52 object-cover"
+
+              />
 
 
-<div className="p-4">
+              <div className="p-4">
 
 
-<h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                <h3 className="font-bold text-lg text-slate-900">
 
-{product.title}
+                  {product.title}
 
-</h3>
-
-
-<p className="text-slate-600 dark:text-slate-300">
-
-{product.category}
-
-</p>
+                </h3>
 
 
-<p className="font-bold text-cyan-500 dark:text-cyan-400">
+                <p className="text-slate-500">
 
-৳ {product.price}
+                  {product.category}
 
-</p>
-
-
-<p className="text-yellow-500">
-
-⭐ {product.rating}
-
-</p>
+                </p>
 
 
-</div>
+                <p className="font-bold text-cyan-500 mt-1">
+
+                  ৳ {product.price}
+
+                </p>
 
 
-</div>
+                <p className="text-yellow-500 mt-1">
 
-))
+                  ⭐ {product.rating}
 
-}
-
-
-
-</div>
-
-</section>
+                </p>
 
 
-)
+                <div className="mt-4 flex justify-end">
+
+                  <Link href={`/products/${product._id}`}>
+
+                    <button className="btn btn-info btn-sm">
+
+                      Details
+
+                    </button>
+
+                  </Link>
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+          ))
+
+        }
+
+
+      </div>
+
+    </section>
+
+  );
 
 }

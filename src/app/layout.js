@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,13 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-gradient-to-br from-blue-100 to-violet-100 dark:bg-slate-900 transition-all duration-300">
+
         <ThemeProvider>
+
+          <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
 
           <Navbar />
 
@@ -38,6 +45,7 @@ export default function RootLayout({ children }) {
           <Footer />
 
         </ThemeProvider>
+
       </body>
     </html>
   );

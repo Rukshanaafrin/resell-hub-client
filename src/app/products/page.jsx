@@ -12,8 +12,11 @@ export default function ProductsPage() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState("");
 
-    const searchParams = useSearchParams();
+    const [currentPage, setCurrentPage] = useState(1);
 
+    const itemsPerPage = 4;
+
+    const searchParams = useSearchParams();
     const category = searchParams.get("category");
 
 
@@ -22,14 +25,11 @@ export default function ProductsPage() {
 
         let url = "http://localhost:5000/products";
 
-
         if (category) {
 
             url += `?category=${category}`;
 
         }
-
-
 
         fetch(url)
 
@@ -37,17 +37,13 @@ export default function ProductsPage() {
 
             .then(data => {
 
-
                 setAllProducts(data);
 
                 setProducts(data);
 
-
             })
 
-
     }, [category]);
-
 
 
 
@@ -62,6 +58,7 @@ export default function ProductsPage() {
 
         if (search) {
 
+
             filtered = filtered.filter(item =>
 
                 item.title.toLowerCase()
@@ -74,33 +71,62 @@ export default function ProductsPage() {
 
 
 
-
         if (sort === "low") {
 
 
-            filtered.sort((a, b) => a.price - b.price);
+            filtered.sort((a, b) =>
+
+                a.price - b.price
+
+            )
 
         }
-
 
 
 
         if (sort === "high") {
 
 
-            filtered.sort((a, b) => b.price - a.price);
+            filtered.sort((a, b) =>
 
+                b.price - a.price
+
+            )
 
         }
 
 
 
-
         setProducts(filtered);
 
+        setCurrentPage(1);
 
 
     }, [search, sort, allProducts]);
+
+
+
+
+
+    const lastIndex = currentPage * itemsPerPage;
+
+    const firstIndex = lastIndex - itemsPerPage;
+
+
+    const currentProducts = products.slice(
+
+        firstIndex,
+
+        lastIndex
+
+    );
+
+
+    const totalPages = Math.ceil(
+
+        products.length / itemsPerPage
+
+    );
 
 
 
@@ -119,8 +145,8 @@ export default function ProductsPage() {
             </h1>
 
 
-            {
 
+            {
 
                 category && (
 
@@ -136,8 +162,8 @@ export default function ProductsPage() {
 
                 )
 
-
             }
+
 
 
 
@@ -148,21 +174,17 @@ export default function ProductsPage() {
 
                 <input
 
-
                     type="text"
 
                     placeholder="Search Product"
 
-
                     className="input input-bordered w-full"
-
 
                     onChange={(e) =>
 
                         setSearch(e.target.value)
 
                     }
-
 
                 />
 
@@ -172,9 +194,7 @@ export default function ProductsPage() {
 
                 <select
 
-
                     className="select select-bordered"
-
 
                     onChange={(e) =>
 
@@ -201,7 +221,6 @@ export default function ProductsPage() {
 
 
 
-
                     <option value="high">
 
                         High to Low
@@ -209,12 +228,11 @@ export default function ProductsPage() {
                     </option>
 
 
-
                 </select>
 
 
-
             </div>
+
 
 
 
@@ -227,7 +245,7 @@ export default function ProductsPage() {
 
                 {
 
-                    products.map(product => (
+                    currentProducts.map(product => (
 
 
                         <div
@@ -243,17 +261,13 @@ export default function ProductsPage() {
                             <figure>
 
 
-
                                 <img
 
-
                                     src={product.images?.[0]}
-
 
                                     className="h-60 w-full object-cover"
 
                                 />
-
 
 
                             </figure>
@@ -261,8 +275,8 @@ export default function ProductsPage() {
 
 
 
-                            <div className="card-body">
 
+                            <div className="card-body">
 
 
 
@@ -276,11 +290,9 @@ export default function ProductsPage() {
 
                                 <p className="font-semibold">
 
-
                                     ৳ {product.price}
 
                                 </p>
-
 
 
 
@@ -291,25 +303,15 @@ export default function ProductsPage() {
 
                                     <Link
 
-
                                         href={`/products/${product._id}`}
-
-
 
                                         className="btn btn-info"
 
-
-
                                     >
-
-
 
                                         Details
 
-
-
                                     </Link>
-
 
 
 
@@ -317,21 +319,78 @@ export default function ProductsPage() {
 
 
 
-
-
                             </div>
+
 
 
 
                         </div>
 
 
-
                     ))
-
 
                 }
 
+
+
+            </div>
+
+
+
+
+
+            <div className="flex justify-center gap-3 mt-12">
+
+
+                {
+
+                    Array.from(
+
+                        { length: totalPages },
+
+                        (_, i) => (
+
+
+                            <button
+
+
+                                key={i}
+
+
+                                onClick={() =>
+
+                                    setCurrentPage(i + 1)
+
+                                }
+
+
+                                className={`btn ${
+
+                                    currentPage === i + 1
+
+                                        ? "btn-info"
+
+                                        : "btn-outline"
+
+                                }`}
+
+                            >
+
+
+
+                                {i + 1}
+
+
+
+                            </button>
+
+
+
+                        )
+
+                    )
+
+                }
 
 
             </div>

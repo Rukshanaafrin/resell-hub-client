@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useParams } from "next/navigation";
 
 export default function ProductDetails() {
@@ -10,6 +11,20 @@ export default function ProductDetails() {
     const [product, setProduct] = useState(null);
 
     const [relatedProducts, setRelatedProducts] = useState([]);
+
+    const handleBuy = () => {
+        toast.success("Proceeding to Checkout");
+    };
+
+
+    const handleWishlist = () => {
+        toast.success("Added to Wishlist");
+    };
+
+
+    const handleReport = () => {
+        toast.success("Product Reported Successfully");
+    };
 
 
     useEffect(() => {
@@ -61,7 +76,7 @@ export default function ProductDetails() {
 
 
                 {/* Left */}
-             
+
                 <div>
 
 
@@ -201,21 +216,22 @@ export default function ProductDetails() {
                     </div>
 
 
-
-
-
                     <div className="flex gap-4 mt-8">
 
-
-                        <button className="btn btn-info">
+                        <button
+                            onClick={handleBuy}
+                            className="btn btn-info"
+                        >
 
                             Buy Now
 
                         </button>
 
 
-
-                        <button className="btn btn-outline btn-info">
+                        <button
+                            onClick={handleWishlist}
+                            className="btn btn-outline btn-info"
+                        >
 
                             Wishlist
 
@@ -223,13 +239,14 @@ export default function ProductDetails() {
 
 
 
-
-                        <button className="btn btn-outline btn-error">
+                        <button
+                            onClick={handleReport}
+                            className="btn btn-outline btn-error"
+                        >
 
                             Report
 
                         </button>
-
 
 
                     </div>
@@ -245,72 +262,72 @@ export default function ProductDetails() {
 
             {/* Related Products */}
 
-<div className="mt-20">
+            <div className="mt-20">
 
-    <h2 className="text-3xl font-bold mb-8">
+                <h2 className="text-3xl font-bold mb-8">
 
-        Related Products
+                    Related Products
 
-    </h2>
-
-
-    <div className="grid md:grid-cols-3 gap-6">
-
-        {relatedProducts.map(item => (
-
-            <div
-                key={item._id}
-                className="card bg-base-100 shadow-xl"
-            >
-
-                <figure>
-
-                    <img
-                        src={item.images?.[0]}
-                        className="h-56 w-full object-cover"
-                    />
-
-                </figure>
+                </h2>
 
 
-                <div className="card-body">
+                <div className="grid md:grid-cols-3 gap-6">
 
-                    <h2 className="card-title">
+                    {relatedProducts.map(item => (
 
-                        {item.title}
-
-                    </h2>
-
-
-                    <p className="text-sky-500 font-bold">
-
-                        ৳ {item.price?.toLocaleString()}
-
-                    </p>
-
-
-                    <div className="card-actions justify-end">
-
-                        <a
-                            href={`/products/${item._id}`}
-                            className="btn btn-info"
+                        <div
+                            key={item._id}
+                            className="card bg-base-100 shadow-xl"
                         >
 
-                            View Details
+                            <figure>
 
-                        </a>
+                                <img
+                                    src={item.images?.[0]}
+                                    className="h-56 w-full object-cover"
+                                />
 
-                    </div>
+                            </figure>
+
+
+                            <div className="card-body">
+
+                                <h2 className="card-title">
+
+                                    {item.title}
+
+                                </h2>
+
+
+                                <p className="text-sky-500 font-bold">
+
+                                    ৳ {item.price?.toLocaleString()}
+
+                                </p>
+
+
+                                <div className="card-actions justify-end">
+
+                                    <a
+                                        href={`/products/${item._id}`}
+                                        className="btn btn-info"
+                                    >
+
+                                        View Details
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    ))}
 
                 </div>
 
             </div>
-
-        ))}
-
-    </div>
-
-</div>
 
 
 
