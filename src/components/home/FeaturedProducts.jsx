@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { motion } from "framer-motion"
+
 export default function FeaturedProducts() {
 
   const [products, setProducts] = useState([]);
@@ -35,9 +37,17 @@ export default function FeaturedProducts() {
 
           products.map(product => (
 
-            <div
+            <motion.div
 
               key={product._id}
+
+              initial={{ opacity: 0, scale: 0.9 }}
+
+              whileInView={{ opacity: 1, scale: 1 }}
+
+              viewport={{ once: true }}
+
+              transition={{ duration: 0.5 }}
 
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
 
@@ -108,7 +118,7 @@ export default function FeaturedProducts() {
               </div>
 
 
-            </div>
+            </motion.div>
 
           ))
 
@@ -117,7 +127,7 @@ export default function FeaturedProducts() {
 
       </div>
 
-    </section>
+    </section >
 
   );
 

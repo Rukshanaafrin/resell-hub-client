@@ -39,7 +39,17 @@ export default function MarketplaceStatistics() {
 
           <motion.div
             key={index}
+
+            initial={{ opacity: 0, y: 40 }}
+
+            whileInView={{ opacity: 1, y: 0 }}
+
+            viewport={{ once: true }}
+
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+
             whileHover={{ scale: 1.05 }}
+
             className="bg-white rounded-2xl shadow-lg p-8 text-center"
           >
 
