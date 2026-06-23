@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import { motion } from "framer-motion"
 
+import ProductSkeleton from "@/components/shared/ProductSkeleton";
+
 export default function FeaturedProducts() {
 
   const [products, setProducts] = useState([]);
@@ -17,6 +19,39 @@ export default function FeaturedProducts() {
       .then(data => setProducts(data));
 
   }, []);
+
+
+  if (products.length === 0) {
+
+    return (
+
+      <section className="max-w-7xl mx-auto py-20 px-4">
+
+        <h2 className="text-4xl font-bold text-center mb-12">
+
+          Featured Products
+
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+          {
+
+            [1, 2, 3, 4].map((item) => (
+
+              <ProductSkeleton key={item} />
+
+            ))
+
+          }
+
+        </div>
+
+      </section>
+
+    )
+
+  }
 
 
   return (
