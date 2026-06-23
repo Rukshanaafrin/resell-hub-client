@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
 
@@ -11,6 +12,8 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -53,155 +56,182 @@ export default function LoginPage() {
 
   };
 
+   // Google signup 
+
+  const handleGoogleLogin = async () => {
+
+    try {
+
+      await authClient.signIn.social({
+
+        provider: "google",
+
+        callbackURL: "http://localhost:3000",
+
+      });
+
+    } catch (error) {
+
+      console.log(error);
+      alert("Google Login Failed");
+
+    }
+
+  };
+
 
 
   return (
 
-<section className="min-h-screen flex items-center justify-center bg-[#0f172a] px-4 py-10">
+    <section className="min-h-screen flex items-center justify-center bg-[#0f172a] px-4 py-10">
 
-<div className="w-full max-w-5xl grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-purple-500/20 bg-[#171722]">
+      <div className="w-full max-w-5xl grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-purple-500/20 bg-[#171722]">
 
 
 
-{/* Left */}
+        {/* Left */}
 
-<div className="hidden lg:flex flex-col justify-center p-12 bg-gradient-to-br from-purple-900 to-black">
+        <div className="hidden lg:flex flex-col justify-center p-12 bg-gradient-to-br from-purple-900 to-black">
 
-<h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl font-bold text-white">
 
-ReSell Hub
+            ReSell Hub
 
-</h1>
+          </h1>
 
 
 
-<p className="mt-5 text-gray-300">
+          <p className="mt-5 text-gray-300">
 
-Buy, Sell and Reuse Products Easily.
+            Buy, Sell and Reuse Products Easily.
 
-</p>
+          </p>
 
-</div>
+        </div>
 
 
 
 
-{/* Right */}
+        {/* Right */}
 
-<div className="p-8">
+        <div className="p-8">
 
 
 
-<h2 className="text-4xl font-bold text-white">
+          <h2 className="text-4xl font-bold text-white">
 
-Welcome Back
+            Welcome Back
 
-</h2>
+          </h2>
 
 
-<p className="mt-2 text-gray-400">
+          <p className="mt-2 text-gray-400">
 
-Login to your account
+            Login to your account
 
-</p>
+          </p>
 
 
 
 
-<form
-onSubmit={handleLogin}
-className="space-y-4 mt-6"
->
+          <form
+            onSubmit={handleLogin}
+            className="space-y-4 mt-6"
+          >
 
 
-<input
+            <input
 
-type="email"
+              type="email"
 
-placeholder="Email"
+              placeholder="Email"
 
-value={email}
+              value={email}
 
-onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
 
-className="w-full rounded-xl bg-[#25304f] p-3 text-white outline-none"
-/>
+              className="w-full rounded-xl bg-[#25304f] p-3 text-white outline-none"
+            />
 
 
 
-<input
+            <div className="relative">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+              />
 
-type="password"
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
 
-placeholder="Password"
 
-value={password}
 
-onChange={(e)=>setPassword(e.target.value)}
 
-className="w-full rounded-xl bg-[#25304f] p-3 text-white outline-none"
-/>
+            <button
 
+              type="submit"
 
+              className="w-full p-3 rounded-xl bg-blue-500 text-white font-semibold"
 
-<button
+            >
 
-type="submit"
+              {loading ? "Logging..." : "Login"}
 
-className="w-full p-3 rounded-xl bg-purple-300 text-white font-semibold"
+            </button>
 
->
 
-{loading ? "Logging..." : "Login"}
 
-</button>
 
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className="w-full border border-gray-500 p-3 rounded-xl text-white"
+            >
+              Continue with Google
+            </button>
 
 
 
-<button
 
-type="button"
+            <p className="text-center text-gray-300">
 
-className="w-full border border-gray-500 p-3 rounded-xl text-white"
+              Don't have an account?
 
->
 
-Continue with Google
+              <Link
 
-</button>
+                href="/register"
 
+                className="text-purple-300 ml-2"
 
+              >
 
+                Register
 
-<p className="text-center text-gray-300">
+              </Link>
 
-Don't have an account?
+            </p>
 
 
-<Link
+          </form>
 
-href="/register"
 
-className="text-purple-300 ml-2"
+        </div>
 
->
+      </div>
 
-Register
-
-</Link>
-
-</p>
-
-
-</form>
-
-
-</div>
-
-</div>
-
-</section>
+    </section>
 
   );
 

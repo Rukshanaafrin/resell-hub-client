@@ -4,12 +4,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function RegisterForm() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -52,13 +56,28 @@ export default function RegisterForm() {
   };
 
 
+  // Google signup
 
-  const handleGoogle = async () => {
-
-    // Google signup later
-
-  };
-
+  const handleGoogleLogin = async () => {
+ 
+     try {
+ 
+       await authClient.signIn.social({
+ 
+         provider: "google",
+ 
+         callbackURL: "http://localhost:3000",
+ 
+       });
+ 
+     } catch (error) {
+ 
+       console.log(error);
+       alert("Google Login Failed");
+ 
+     }
+ 
+   };
 
 
   return (
@@ -164,25 +183,48 @@ export default function RegisterForm() {
 
 
 
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              required
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
-            />
+            <div className="relative">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
 
 
 
 
-            <input
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-              required
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
-            />
+            <div className="relative">
+              <input
+                name="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm Password"
+                required
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+              />
 
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+              >
+                {showConfirmPassword ? (
+                  <EyeOff size={18} />
+                ) : (
+                  <Eye size={18} />
+                )}
+              </button>
+            </div>
 
 
 
@@ -228,7 +270,7 @@ export default function RegisterForm() {
 
             <button
               type="button"
-              onClick={handleGoogle}
+              onClick={handleGoogleLogin}
               className="w-full border border-purple-500 h-10 rounded-xl text-purple-300 hover:bg-purple-500 hover:text-white transition"
             >
 
