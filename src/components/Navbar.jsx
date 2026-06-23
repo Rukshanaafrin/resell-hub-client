@@ -21,6 +21,8 @@ import {
     LogOut,
     Menu,
     X,
+    Info,
+    Mail,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -54,6 +56,18 @@ export default function Navbar() {
             name: "Categories",
             href: "/categories",
             icon: <Folder size={18} />,
+        },
+
+        {
+            name: "About Us",
+            href: "/about",
+            icon: <Info size={18} />,
+        },
+
+          {
+            name: "Contact Us",
+            href: "/contact",
+            icon: <Mail size={18} />,
         },
 
         {
