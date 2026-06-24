@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 import ProductSkeleton from "@/components/shared/ProductSkeleton";
 
@@ -16,9 +15,11 @@ export default function FeaturedProducts() {
 
     fetch("http://localhost:5000/featured-products")
       .then(res => res.json())
-      .then(data => setProducts(data));
+      .then(data => setProducts(data))
+      .catch(err => console.log(err));
 
   }, []);
+
 
 
   if (products.length === 0) {
@@ -33,11 +34,12 @@ export default function FeaturedProducts() {
 
         </h2>
 
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
           {
 
-            [1, 2, 3, 4].map((item) => (
+            [1, 2, 3, 4].map(item => (
 
               <ProductSkeleton key={item} />
 
@@ -49,9 +51,10 @@ export default function FeaturedProducts() {
 
       </section>
 
-    )
+    );
 
   }
+
 
 
   return (
@@ -66,7 +69,6 @@ export default function FeaturedProducts() {
 
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
 
         {
 
@@ -88,16 +90,19 @@ export default function FeaturedProducts() {
 
             >
 
-
               <Image
 
-                src={product.images[0]}
+                src={
+                  product.image ||
+                  product.images?.[0] ||
+                  "https://placehold.co/400x250"
+                }
 
                 width={400}
 
                 height={250}
 
-                alt={product.title}
+                alt={product.name || "Product"}
 
                 className="w-full h-52 object-cover"
 
@@ -106,10 +111,9 @@ export default function FeaturedProducts() {
 
               <div className="p-4">
 
-
                 <h3 className="font-bold text-lg text-slate-900">
 
-                  {product.title}
+                  {product.name || product.title || "No Name"}
 
                 </h3>
 
@@ -130,7 +134,7 @@ export default function FeaturedProducts() {
 
                 <p className="text-yellow-500 mt-1">
 
-                  ⭐ {product.rating}
+                  ⭐ {product.rating || 4.5}
 
                 </p>
 
@@ -149,9 +153,7 @@ export default function FeaturedProducts() {
 
                 </div>
 
-
               </div>
-
 
             </motion.div>
 
@@ -159,10 +161,9 @@ export default function FeaturedProducts() {
 
         }
 
-
       </div>
 
-    </section >
+    </section>
 
   );
 

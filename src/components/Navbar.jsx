@@ -64,7 +64,7 @@ export default function Navbar() {
             icon: <Info size={18} />,
         },
 
-          {
+        {
             name: "Contact Us",
             href: "/contact",
             icon: <Mail size={18} />,
@@ -356,6 +356,19 @@ export default function Navbar() {
                                             </Link>
 
 
+                                            <Link href="/dashboard/settings">
+
+                                                <div className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white">
+
+                                                    <Settings size={18} />
+
+                                                    Settings
+
+                                                </div>
+
+                                            </Link>
+
+
 
 
                                             <button
@@ -366,7 +379,7 @@ export default function Navbar() {
 
                                                     await authClient.signOut()
 
-                                                  
+
 
 
                                                 }}

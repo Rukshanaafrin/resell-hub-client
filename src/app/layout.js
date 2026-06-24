@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,13 +37,13 @@ export default function RootLayout({ children }) {
             reverseOrder={false}
           />
 
-          <Navbar />
+          {/* <Navbar /> */}
 
           <main className="flex-1">
             {children}
           </main>
 
-          <Footer />
+          {/* <Footer /> */}
 
         </ThemeProvider>
 
