@@ -38,9 +38,42 @@ export default function LoginPage() {
 
       if (res) {
 
+        // JWT Token Generate
+
+        const tokenRes = await fetch("http://localhost:5000/jwt", {
+
+          method: "POST",
+
+          headers: {
+            "content-type": "application/json"
+          },
+
+          body: JSON.stringify({
+
+            email
+
+          })
+
+        })
+
+
+        const data = await tokenRes.json();
+
+
+        localStorage.setItem(
+
+          "access-token",
+
+          data.token
+
+        );
+
+
         alert("Login Successful");
 
+
         router.push("/");
+
 
       }
 
@@ -56,7 +89,7 @@ export default function LoginPage() {
 
   };
 
-   // Google signup 
+  // Google signup 
 
   const handleGoogleLogin = async () => {
 

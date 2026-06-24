@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useParams } from "next/navigation";
 
+import { useRouter } from "next/navigation";
+
 export default function ProductDetails() {
+
+    const router = useRouter();
 
     const { id } = useParams();
 
@@ -13,17 +17,90 @@ export default function ProductDetails() {
     const [relatedProducts, setRelatedProducts] = useState([]);
 
     const handleBuy = () => {
-        toast.success("Proceeding to Checkout");
+
+        router.push("/dashboard/payment-history");
+
     };
 
 
-    const handleWishlist = () => {
-        toast.success("Added to Wishlist");
+
+    const handleWishlist = async () => {
+
+        const item = {
+
+            title: product.title,
+            price: product.price,
+            category: product.category
+
+        };
+
+
+        const res = await fetch(
+
+            "http://localhost:5000/wishlist",
+
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(item)
+
+            }
+
+        );
+
+
+        const data = await res.json();
+
+
+        if (data.insertedId) {
+
+            toast.success("Added To Wishlist");
+
+        }
+
     };
 
 
-    const handleReport = () => {
-        toast.success("Product Reported Successfully");
+
+    const handleReport = async () => {
+
+
+        const report = {
+
+            productId: product._id,
+            title: product.title,
+            reason: "Suspicious Product"
+
+        };
+
+
+        await fetch(
+
+            "http://localhost:5000/reports",
+
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(report)
+
+            }
+
+        );
+
+
+        toast.success("Product Reported");
+
+
     };
 
 

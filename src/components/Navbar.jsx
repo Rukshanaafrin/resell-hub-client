@@ -326,7 +326,7 @@ export default function Navbar() {
 
                                             <Link
 
-                                                href="/profile"
+                                                href="/dashboard/profile"
 
                                                 className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
 

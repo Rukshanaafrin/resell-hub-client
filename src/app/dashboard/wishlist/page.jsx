@@ -9,8 +9,24 @@ export default function Wishlist() {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/wishlist")
+        fetch(
+
+            "http://localhost:5000/wishlist",
+
+            {
+
+                headers: {
+
+                    authorization: `Bearer ${localStorage.getItem("access-token")}`
+
+                }
+
+            }
+
+        )
+
             .then(res => res.json())
+
             .then(data => {
 
                 setWishlist(data);
