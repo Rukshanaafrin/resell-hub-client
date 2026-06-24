@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { Sun } from "lucide-react";
+// import { useTheme } from "next-themes";
+// import { Sun } from "lucide-react";
 import { useSession, authClient } from "@/lib/auth-client";
 
 import {
@@ -35,7 +35,7 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const { theme, setTheme } = useTheme();
+    // const { theme, setTheme } = useTheme();
 
 
     const links = [
@@ -170,7 +170,7 @@ export default function Navbar() {
 
                     {/* Theme */}
 
-                    <button
+                    {/* <button
 
 
                         onClick={() => {
@@ -215,7 +215,7 @@ export default function Navbar() {
                         }
 
 
-                    </button>
+                    </button> */}
 
 
 

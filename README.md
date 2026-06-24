@@ -1,108 +1,126 @@
-# ReSellHub
+ReSell Hub
 
-## Project Purpose
+Project Purpose
 
-ReSellHub is a modern second-hand marketplace platform designed to help users buy and sell pre-owned products safely and efficiently. The platform promotes sustainable consumption, reduces waste, creates earning opportunities for sellers, and provides affordable shopping experiences for buyers.
-
----
-
-## Live URL
-
-🔗 
+ReSell Hub is a modern second-hand marketplace platform where users can securely buy and sell pre-owned products. The platform promotes sustainable consumption, reduces waste, and helps users earn money from unused items.
 
 ---
 
-## Key Features
+Live URL
 
-### Authentication System
 
-* Email & Password Authentication
-* Google Sign-In
-* Secure Logout
-* JWT Authentication
-* Protected Routes
-* Role-Based Authorization
-
-### Marketplace Features
-
-* Featured Products Section
-* Dynamic Categories Section
-* Product Details Page
-* Related Products
-* Product Search
-* Price Sorting
-* Pagination
-* Wishlist System
-* Product Reporting System
-
-### Dashboard Features
-
-#### Buyer Dashboard
-
-* Dashboard Overview
-* My Orders
-* Wishlist
-* Payment History
-* Profile Management
-
-#### Seller Dashboard
-
-* Add Product
-* My Products
-* Manage Orders
-* Sales Analytics
-
-#### Admin Dashboard
-
-* Manage Users
-* Manage Products
-* Manage Orders
-* Platform Analytics
-
-### Payment System
-
-* Stripe Payment Integration
-* Secure Checkout
-* Payment Success Page
-* Payment History
-
-### Additional Features
-
-* Dark / Light Theme Toggle
-* Seller Verification Badge
-* Sustainability Section
-* Trusted Sellers Section
-* Success Stories Section
-* Responsive Design
-* Framer Motion Animations
 
 ---
 
-## NPM Packages Used
+Key Features
 
-### Frontend Packages
+Authentication
 
-```bash
+- Email and Password Authentication
+- Google Authentication
+- Better Auth Integration
+- JWT Authentication
+- Protected Routes
+- Protected APIs
+
+Buyer Features
+
+- Dashboard Overview
+- My Orders
+- Wishlist Management
+- Payment History
+- Profile Management
+- Settings Management
+- Product Reporting System
+
+Seller Features
+
+- Add Product
+- Manage Products
+- Edit Products
+- Delete Products
+- Manage Orders
+- Sales Analytics
+
+Admin Features
+
+- Manage Users
+- Manage Products
+- Manage Orders
+- Platform Analytics
+- User Status Management
+
+Home Page Features
+
+- Hero Banner
+- Featured Products
+- Popular Categories
+- Success Stories
+- Marketplace Statistics
+- Sustainability Impact
+- Trusted Sellers Showcase
+
+Challenge Features
+
+- JWT Verification
+- Advanced Search
+- Advanced Sorting
+- Pagination
+- Dark/Light Theme Toggle
+
+---
+
+Technologies Used
+
+- Next.js
+- React
+- MongoDB
+- Better Auth
+- JWT
+- Tailwind CSS
+- DaisyUI
+- Framer Motion
+- Stripe
+- Recharts
+
+---
+
+NPM Packages Used
+
 next
+
 react
+
 tailwindcss
+
 daisyui
-firebase
-axios
-react-hot-toast
+
+lucide-react
+
 framer-motion
-react-icons
-```
 
-### Backend Packages
+axios
 
-```bash
-express
-mongodb
-cors
-dotenv
-cookie-parser
 jsonwebtoken
-stripe
-nodemon
-```
+
+react-hot-toast
+
+recharts
+
+sweetalert2
+
+@stripe/react-stripe-js
+
+@stripe/stripe-js
+
+---
+
+Environment Variables
+
+Create a .env.local file
+
+NEXT_PUBLIC_API_URL=
+
+NEXT_PUBLIC_BETTER_AUTH_URL=
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
