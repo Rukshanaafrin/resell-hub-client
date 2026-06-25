@@ -13,7 +13,7 @@ export default function FeaturedProducts() {
 
   useEffect(() => {
 
-    fetch("http://localhost:5000/featured-products")
+    fetch("https://resell-hub-server.onrender.com//featured-products")
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.log(err));

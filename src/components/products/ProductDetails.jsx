@@ -37,7 +37,7 @@ export default function ProductDetails() {
 
         const res = await fetch(
 
-            "http://localhost:5000/wishlist",
+            "https://resell-hub-server.onrender.com//wishlist",
 
             {
 
@@ -81,7 +81,7 @@ export default function ProductDetails() {
 
         await fetch(
 
-            "http://localhost:5000/reports",
+            "https://resell-hub-server.onrender.com//reports",
 
             {
 
@@ -106,7 +106,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://resell-hub-server.onrender.com//products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
@@ -114,7 +114,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/featured-products")
+        fetch("https://resell-hub-server.onrender.com//featured-products")
             .then(res => res.json())
             .then(data => {
 

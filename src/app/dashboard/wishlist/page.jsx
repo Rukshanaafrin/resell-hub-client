@@ -11,7 +11,7 @@ export default function Wishlist() {
 
         fetch(
 
-            "http://localhost:5000/wishlist",
+            "https://resell-hub-server.onrender.com//wishlist",
 
             {
 
@@ -49,7 +49,7 @@ export default function Wishlist() {
 
         await fetch(
 
-            `http://localhost:5000/wishlist/${id}`,
+            `https://resell-hub-server.onrender.com//wishlist/${id}`,
 
             {
 

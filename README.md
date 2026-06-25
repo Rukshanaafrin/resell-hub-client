@@ -8,7 +8,7 @@ ReSell Hub is a modern second-hand marketplace platform where users can securely
 
 Live URL
 
-
+https://resell-hub-client-blond.vercel.app/
 
 ---
 

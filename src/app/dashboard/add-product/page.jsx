@@ -67,7 +67,7 @@ export default function AddProduct() {
     try {
 
       const res = await fetch(
-        "http://localhost:5000/products",
+        "https://resell-hub-server.onrender.com//products",
         {
           method: "POST",
 

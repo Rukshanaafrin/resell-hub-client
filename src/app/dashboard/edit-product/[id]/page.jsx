@@ -22,7 +22,7 @@ export default function EditProduct() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://resell-hub-server.onrender.com//products/${id}`)
             .then(res => res.json())
             .then(data => {
 
@@ -91,7 +91,7 @@ export default function EditProduct() {
 
         const res = await fetch(
 
-            `http://localhost:5000/products/${id}`,
+            `https://resell-hub-server.onrender.com//products/${id}`,
 
             {
 

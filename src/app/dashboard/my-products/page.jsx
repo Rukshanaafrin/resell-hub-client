@@ -15,7 +15,7 @@ export default function MyProducts() {
     if (!confirmDelete) return;
 
     const res = await fetch(
-      `http://localhost:5000/products/${id}`,
+      `https://resell-hub-server.onrender.com//products/${id}`,
       {
         method: "DELETE",
       }
@@ -39,7 +39,7 @@ export default function MyProducts() {
 
   useEffect(() => {
 
-    fetch("http://localhost:5000/my-products")
+    fetch("https://resell-hub-server.onrender.com//my-products")
 
       .then(res => res.json())
 

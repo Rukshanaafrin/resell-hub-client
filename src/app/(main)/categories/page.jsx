@@ -17,7 +17,7 @@ export default function CategoriesPage() {
 
   useEffect(() => {
 
-    fetch("http://localhost:5000/categories")
+    fetch("https://resell-hub-server.onrender.com//categories")
       .then(res => res.json())
       .then(data => setCategories(data));
 

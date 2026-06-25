@@ -9,7 +9,7 @@ const [products,setProducts]=useState([]);
 
 useEffect(()=>{
 
-fetch("http://localhost:5000/admin-products")
+fetch("https://resell-hub-server.onrender.com//admin-products")
 .then(res=>res.json())
 .then(data=>{
 
@@ -38,7 +38,7 @@ product.status==="approved"
 
 await fetch(
 
-`http://localhost:5000/admin-products/${product._id}`,
+`https://resell-hub-server.onrender.com//admin-products/${product._id}`,
 
 {
 
@@ -97,7 +97,7 @@ if(!ok)return;
 
 await fetch(
 
-`http://localhost:5000/admin-products/${id}`,
+`https://resell-hub-server.onrender.com//admin-products/${id}`,
 
 {
 

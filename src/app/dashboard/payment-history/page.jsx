@@ -9,7 +9,7 @@ const [payments,setPayments]=useState([]);
 
 useEffect(()=>{
 
-fetch("http://localhost:5000/payments")
+fetch("https://resell-hub-server.onrender.com//payments")
 .then(res=>res.json())
 .then(data=>setPayments(data));
 

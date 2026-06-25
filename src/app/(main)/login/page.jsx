@@ -40,7 +40,7 @@ export default function LoginPage() {
 
         // JWT Token Generate
 
-        const tokenRes = await fetch("http://localhost:5000/jwt", {
+        const tokenRes = await fetch("https://resell-hub-server.onrender.com//jwt", {
 
           method: "POST",
 

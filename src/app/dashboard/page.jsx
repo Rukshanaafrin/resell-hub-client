@@ -14,20 +14,20 @@ const [revenue,setRevenue]=useState(0);
 useEffect(()=>{
 
 
-fetch("http://localhost:5000/orders")
+fetch("https://resell-hub-server.onrender.com//orders")
 .then(res=>res.json())
 .then(data=>setOrders(data));
 
 
 
-fetch("http://localhost:5000/wishlist")
+fetch("https://resell-hub-server.onrender.com//wishlist")
 .then(res=>res.json())
 .then(data=>setWishlist(data));
 
 
 
 
-fetch("http://localhost:5000/payments")
+fetch("https://resell-hub-server.onrender.com//payments")
 .then(res=>res.json())
 .then(data=>{
 

@@ -8,7 +8,7 @@ export default function ManageOrders() {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/orders")
+        fetch("https://resell-hub-server.onrender.com//orders")
             .then(res => res.json())
             .then(data => setOrders(data));
 
@@ -20,7 +20,7 @@ export default function ManageOrders() {
         const delivery = status;
 
         const res = await fetch(
-            `http://localhost:5000/orders/${id}`,
+            `https://resell-hub-server.onrender.com//orders/${id}`,
             {
                 method: "PATCH",
 
