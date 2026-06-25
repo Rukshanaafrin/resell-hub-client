@@ -66,7 +66,7 @@ export default function RegisterForm() {
  
          provider: "google",
  
-         callbackURL: "http://localhost:3000",
+         callbackURL: "https://resell-hub-client-blond.vercel.app",
  
        });
  
