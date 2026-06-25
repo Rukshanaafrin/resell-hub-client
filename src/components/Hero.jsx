@@ -75,7 +75,7 @@ export default function Hero() {
 
               <Link href="/products">
 
-                <button className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-xl">
+                <button className="bg-sky-500 hover:bg-sky-600 text-black px-6 py-3 rounded-xl">
 
                   Explore Products
 
@@ -88,7 +88,7 @@ export default function Hero() {
 
               <Link href="/dashboard/add-product">
 
-                <button className="border border-sky-500 text-sky-500 px-6 py-3 rounded-xl hover:bg-sky-500 hover:text-white">
+                <button className="border border-sky-500 text-sky-500 px-6 py-3 rounded-xl hover:bg-sky-500 hover:text-black">
 
                   Start Selling
 
@@ -157,7 +157,7 @@ export default function Hero() {
             </h2>
 
 
-            <p className="text-slate-700 dark:text-white">
+            <p className="text-slate-700 dark:text-black">
 
               Products
 
@@ -181,7 +181,7 @@ export default function Hero() {
             </h2>
 
 
-            <p className="text-slate-700 dark:text-white">
+            <p className="text-slate-700 dark:text-black">
 
               Sellers
 
@@ -205,7 +205,7 @@ export default function Hero() {
             </h2>
 
 
-            <p className="text-slate-700 dark:text-white">
+            <p className="text-slate-700 dark:text-black">
 
               Buyers
 
@@ -229,7 +229,7 @@ export default function Hero() {
             </h2>
 
 
-            <p className="text-slate-700 dark:text-white">
+            <p className="text-slate-700 dark:text-black">
 
               Completed Orders
 

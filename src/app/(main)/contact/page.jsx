@@ -8,7 +8,7 @@ export default function ContactPage() {
 
         <div className="text-center mb-14">
 
-          <h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl font-bold text-black">
 
             Contact Us
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
 
           <div className="bg-[#171722] p-8 rounded-3xl border border-purple-500/20">
 
-            <h2 className="text-3xl font-bold text-white mb-8">
+            <h2 className="text-3xl font-bold text-black mb-8">
 
               Get In Touch
 
@@ -47,7 +47,7 @@ export default function ContactPage() {
 
                 <div>
 
-                  <h3 className="text-white font-semibold">
+                  <h3 className="text-black font-semibold">
 
                     Email
 
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
                 <div>
 
-                  <h3 className="text-white font-semibold">
+                  <h3 className="text-black font-semibold">
 
                     Phone
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
 
                 <div>
 
-                  <h3 className="text-white font-semibold">
+                  <h3 className="text-black font-semibold">
 
                     Address
 
@@ -125,7 +125,7 @@ export default function ContactPage() {
           <div className="bg-[#171722] p-8 rounded-3xl border border-purple-500/20">
 
 
-            <h2 className="text-3xl font-bold text-white mb-8">
+            <h2 className="text-3xl font-bold text-black mb-8">
 
               Send Message
 
@@ -139,7 +139,7 @@ export default function ContactPage() {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full h-12 rounded-xl bg-[#222232] px-4 text-white outline-none"
+                className="w-full h-12 rounded-xl bg-[#222232] px-4 text-black outline-none"
               />
 
 
@@ -147,7 +147,7 @@ export default function ContactPage() {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full h-12 rounded-xl bg-[#222232] px-4 text-white outline-none"
+                className="w-full h-12 rounded-xl bg-[#222232] px-4 text-black outline-none"
               />
 
 
@@ -155,13 +155,13 @@ export default function ContactPage() {
               <textarea
                 rows={5}
                 placeholder="Message"
-                className="w-full rounded-xl bg-[#222232] p-4 text-white outline-none"
+                className="w-full rounded-xl bg-[#222232] p-4 text-black outline-none"
               />
 
 
 
               <button
-                className="w-full h-12 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold"
+                className="w-full h-12 rounded-xl bg-purple-600 hover:bg-purple-700 text-black font-semibold"
               >
 
                 Send Message

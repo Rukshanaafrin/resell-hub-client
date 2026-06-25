@@ -261,7 +261,7 @@ onChange={(e)=>setConfirmPassword(e.target.value)}
 
 onClick={handleSave}
 
-className="btn btn-info w-full text-white"
+className="btn btn-info w-full text-black"
 
 
 >

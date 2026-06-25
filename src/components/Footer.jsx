@@ -36,7 +36,7 @@ export default function Footer() {
 
           <div>
 
-            <h3 className="text-white font-semibold mb-5">
+            <h3 className="text-black font-semibold mb-5">
               Quick Links
             </h3>
 
@@ -91,7 +91,7 @@ export default function Footer() {
 
           <div>
 
-            <h3 className="text-white font-semibold mb-5">
+            <h3 className="text-black font-semibold mb-5">
               Contact Us
             </h3>
 
@@ -136,7 +136,7 @@ export default function Footer() {
 
           <div>
 
-            <h3 className="text-white font-semibold mb-5">
+            <h3 className="text-black font-semibold mb-5">
               Follow Us
             </h3>
 

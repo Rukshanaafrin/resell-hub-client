@@ -8,7 +8,7 @@ export default function NotFound() {
         404
       </h1>
 
-      <h2 className="mt-4 text-3xl font-bold text-white">
+      <h2 className="mt-4 text-3xl font-bold text-black">
         Page Not Found
       </h2>
 
@@ -17,7 +17,7 @@ export default function NotFound() {
       </p>
 
       <Link href="/">
-        <button className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl text-white font-semibold">
+        <button className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl text-black font-semibold">
           Back To Home
         </button>
       </Link>

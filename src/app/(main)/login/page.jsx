@@ -126,7 +126,7 @@ export default function LoginPage() {
 
         <div className="hidden lg:flex flex-col justify-center p-12 bg-gradient-to-br from-purple-900 to-black">
 
-          <h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl font-bold text-black">
 
             ReSell Hub
 
@@ -151,7 +151,7 @@ export default function LoginPage() {
 
 
 
-          <h2 className="text-4xl font-bold text-white">
+          <h2 className="text-4xl font-bold text-black">
 
             Welcome Back
 
@@ -183,7 +183,7 @@ export default function LoginPage() {
 
               onChange={(e) => setEmail(e.target.value)}
 
-              className="w-full rounded-xl bg-[#25304f] p-3 text-white outline-none"
+              className="w-full rounded-xl bg-[#25304f] p-3 text-black outline-none"
             />
 
 
@@ -196,7 +196,7 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
-                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
               />
 
               <button
@@ -215,7 +215,7 @@ export default function LoginPage() {
 
               type="submit"
 
-              className="w-full p-3 rounded-xl bg-blue-500 text-white font-semibold"
+              className="w-full p-3 rounded-xl bg-blue-500 text-black font-semibold"
 
             >
 
@@ -229,7 +229,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="w-full border border-gray-500 p-3 rounded-xl text-white"
+              className="w-full border border-gray-500 p-3 rounded-xl text-black"
             >
               Continue with Google
             </button>

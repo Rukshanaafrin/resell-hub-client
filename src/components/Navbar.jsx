@@ -108,7 +108,7 @@ export default function Navbar() {
 
                         </span>
 
-                        <span className="text-white">
+                        <span className="text-black">
 
                             Hub
 
@@ -229,8 +229,8 @@ export default function Navbar() {
                                 <Link
                                     href="/login"
                                     className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
-                                        ? "bg-purple-600 text-white"
-                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        ? "bg-purple-600 text-black"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-black"
                                         }`}
                                 >
 
@@ -242,8 +242,8 @@ export default function Navbar() {
                                 <Link
                                     href="/register"
                                     className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
-                                        ? "bg-purple-600 text-white"
-                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        ? "bg-purple-600 text-black"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-black"
                                         }`}
                                 >
 
@@ -298,7 +298,7 @@ export default function Navbar() {
 
 
 
-                                    <span className="text-white">
+                                    <span className="text-black">
 
                                         {session.user.name}
 
@@ -308,7 +308,7 @@ export default function Navbar() {
 
                                     <ChevronDown
                                         size={18}
-                                        className="text-white"
+                                        className="text-black"
                                     />
 
                                 </button>
@@ -328,7 +328,7 @@ export default function Navbar() {
 
                                                 href="/dashboard/profile"
 
-                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-black"
 
                                             >
 
@@ -345,7 +345,7 @@ export default function Navbar() {
 
                                                 href="/dashboard"
 
-                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-black"
 
                                             >
 
@@ -358,7 +358,7 @@ export default function Navbar() {
 
                                             <Link href="/dashboard/settings">
 
-                                                <div className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white">
+                                                <div className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-black">
 
                                                     <Settings size={18} />
 
@@ -419,7 +419,7 @@ export default function Navbar() {
 
                         onClick={() => setMenuOpen(!menuOpen)}
 
-                        className="md:hidden text-white"
+                        className="md:hidden text-black"
 
                     >
 
@@ -495,8 +495,8 @@ export default function Navbar() {
                             <Link
                                 href="/login"
                                 className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
-                                    ? "bg-purple-600 text-white"
-                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                    ? "bg-purple-600 text-black"
+                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-black"
                                     }
                                     `}
                             >
@@ -508,8 +508,8 @@ export default function Navbar() {
                             <Link
                                 href="/register"
                                 className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
-                                    ? "bg-purple-600 text-white"
-                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                    ? "bg-purple-600 text-black"
+                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-black"
                                     }
                                     `}
                             >

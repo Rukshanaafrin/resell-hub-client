@@ -76,7 +76,7 @@ Dashboard Overview
 
 
 
-<div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 rounded-xl text-white shadow-lg">
+<div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 rounded-xl text-black shadow-lg">
 
 <p>Total Orders</p>
 
@@ -92,7 +92,7 @@ Dashboard Overview
 
 
 
-<div className="bg-gradient-to-r from-pink-500 to-rose-600 p-6 rounded-xl text-white shadow-lg">
+<div className="bg-gradient-to-r from-pink-500 to-rose-600 p-6 rounded-xl text-black shadow-lg">
 
 <p>Wishlist</p>
 
@@ -109,7 +109,7 @@ Dashboard Overview
 
 
 
-<div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 rounded-xl text-white shadow-lg">
+<div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 rounded-xl text-black shadow-lg">
 
 <p>Payments</p>
 
@@ -127,7 +127,7 @@ Dashboard Overview
 
 
 
-<div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-6 rounded-xl text-white shadow-lg">
+<div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-6 rounded-xl text-black shadow-lg">
 
 <p>Revenue</p>
 
