@@ -8,7 +8,7 @@ export default function AdminOrders() {
 
     useEffect(() => {
 
-        fetch("https://resell-hub-server.onrender.com//orders")
+        fetch("https://resell-hub-server.onrender.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data));
 
@@ -19,7 +19,7 @@ export default function AdminOrders() {
     const handleApprove = async (order) => {
 
         await fetch(
-            `https://resell-hub-server.onrender.com//orders/${order._id}`,
+            `https://resell-hub-server.onrender.com/orders/${order._id}`,
             {
                 method: "PATCH",
 

@@ -23,7 +23,7 @@ export default function ProductsPage() {
 
     useEffect(() => {
 
-        let url = "https://resell-hub-server.onrender.com//products";
+        let url = "https://resell-hub-server.onrender.com/products";
 
         if (category) {
 

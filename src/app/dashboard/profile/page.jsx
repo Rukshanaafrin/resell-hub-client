@@ -8,7 +8,7 @@ export default function Profile() {
 
     useEffect(() => {
 
-        fetch("https://resell-hub-server.onrender.com//users")
+        fetch("https://resell-hub-server.onrender.com/users")
 
             .then(res => res.json())
 
@@ -50,7 +50,7 @@ export default function Profile() {
 
         const res = await fetch(
 
-            `https://resell-hub-server.onrender.com//update-profile/${user._id}`,
+            `https://resell-hub-server.onrender.com/update-profile/${user._id}`,
 
             {
 

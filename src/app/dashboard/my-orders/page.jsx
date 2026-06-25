@@ -8,7 +8,7 @@ export default function MyOrders() {
 
     useEffect(() => {
 
-        fetch("https://resell-hub-server.onrender.com//orders")
+        fetch("https://resell-hub-server.onrender.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data));
 
@@ -25,7 +25,7 @@ export default function MyOrders() {
 
         await fetch(
 
-            `https://resell-hub-server.onrender.com//cancel-order/${id}`,
+            `https://resell-hub-server.onrender.com/cancel-order/${id}`,
 
             {
 

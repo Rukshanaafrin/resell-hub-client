@@ -9,7 +9,7 @@ const [payments,setPayments]=useState([]);
 
 useEffect(()=>{
 
-fetch("https://resell-hub-server.onrender.com//payments")
+fetch("https://resell-hub-server.onrender.com/payments")
 .then(res=>res.json())
 .then(data=>setPayments(data));
 

@@ -23,7 +23,7 @@ const [confirmPassword,setConfirmPassword]=useState("");
 useEffect(()=>{
 
 
-fetch("https://resell-hub-server.onrender.com//users")
+fetch("https://resell-hub-server.onrender.com/users")
 
 .then(res=>res.json())
 
@@ -68,7 +68,7 @@ return;
 
 const res=await fetch(
 
-`https://resell-hub-server.onrender.com//settings/${user._id}`,
+`https://resell-hub-server.onrender.com/settings/${user._id}`,
 
 {
 

@@ -11,7 +11,7 @@ export default function ManageUsers() {
 
     useEffect(() => {
 
-        fetch("https://resell-hub-server.onrender.com//users")
+        fetch("https://resell-hub-server.onrender.com/users")
             .then(res => res.json())
             .then(data => setUsers(data));
 
@@ -23,7 +23,7 @@ export default function ManageUsers() {
 
         const res = await fetch(
 
-            `https://resell-hub-server.onrender.com//users/${id}`,
+            `https://resell-hub-server.onrender.com/users/${id}`,
 
             {
 
@@ -97,7 +97,7 @@ export default function ManageUsers() {
 
         const res = await fetch(
 
-            `https://resell-hub-server.onrender.com//users/${id}`,
+            `https://resell-hub-server.onrender.com/users/${id}`,
 
             {
 

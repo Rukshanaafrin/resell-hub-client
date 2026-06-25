@@ -14,20 +14,20 @@ const [revenue,setRevenue]=useState(0);
 useEffect(()=>{
 
 
-fetch("https://resell-hub-server.onrender.com//orders")
+fetch("https://resell-hub-server.onrender.com/orders")
 .then(res=>res.json())
 .then(data=>setOrders(data));
 
 
 
-fetch("https://resell-hub-server.onrender.com//wishlist")
+fetch("https://resell-hub-server.onrender.com/wishlist")
 .then(res=>res.json())
 .then(data=>setWishlist(data));
 
 
 
 
-fetch("https://resell-hub-server.onrender.com//payments")
+fetch("https://resell-hub-server.onrender.com/payments")
 .then(res=>res.json())
 .then(data=>{
 
