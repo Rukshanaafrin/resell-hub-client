@@ -194,7 +194,7 @@ export default function Navbar() {
 
 
 
-                        className="text-cyan-400 hover:scale-110 duration-300"
+                        className="text-cyan-500 hover:scale-110 duration-300"
 
 
                     >
