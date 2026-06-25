@@ -94,7 +94,7 @@ export default function RegisterForm() {
 
         <div className="hidden lg:flex flex-col justify-center p-8 bg-gradient-to-br from-purple-900 to-black">
 
-          <h1 className="text-5xl font-bold text-black">
+          <h1 className="text-5xl font-bold text-white">
 
             ReSell Hub
 
@@ -120,7 +120,7 @@ export default function RegisterForm() {
 
         <div className="p-5">
 
-          <h2 className="text-3xl font-bold text-black">
+          <h2 className="text-3xl font-bold text-white">
 
             Create Account
 
@@ -147,7 +147,7 @@ export default function RegisterForm() {
               type="text"
               placeholder="Full Name"
               required
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
             />
 
 
@@ -157,7 +157,7 @@ export default function RegisterForm() {
               type="email"
               placeholder="Email Address"
               required
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
             />
 
 
@@ -166,7 +166,7 @@ export default function RegisterForm() {
               name="location"
               type="text"
               placeholder="Location"
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
             />
 
 
@@ -176,7 +176,7 @@ export default function RegisterForm() {
               name="photo"
               type="text"
               placeholder="Photo URL"
-              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
             />
 
 
@@ -189,7 +189,7 @@ export default function RegisterForm() {
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 required
-                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
               />
 
               <button
@@ -210,7 +210,7 @@ export default function RegisterForm() {
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm Password"
                 required
-                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-black outline-none"
+                className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
               />
 
               <button
@@ -244,7 +244,7 @@ export default function RegisterForm() {
 
             <button
               disabled={loading}
-              className="w-full bg-purple-600 hover:bg-purple-700 h-10 rounded-xl text-black font-semibold"
+              className="w-full bg-purple-600 hover:bg-purple-700 h-10 rounded-xl text-white font-semibold"
             >
 
               {
@@ -271,7 +271,7 @@ export default function RegisterForm() {
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="w-full border border-purple-500 h-10 rounded-xl text-purple-300 hover:bg-purple-500 hover:text-black transition"
+              className="w-full border border-purple-500 h-10 rounded-xl text-purple-300 hover:bg-purple-500 hover:text-white transition"
             >
 
               Continue with Google

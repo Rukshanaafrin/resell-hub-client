@@ -257,7 +257,7 @@ export default function AddProduct() {
 
             type="submit"
 
-            className="btn bg-cyan-500 hover:bg-cyan-600 text-black rounded-xl"
+            className="btn bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl"
 
           >
 

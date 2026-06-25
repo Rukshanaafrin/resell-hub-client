@@ -127,7 +127,7 @@ export default function DashboardLayout({ children }) {
       {/* Mobile Button */}
       <button
         onClick={() => setOpen(true)}
-        className="md:hidden fixed top-4 left-4 z-50 bg-cyan-500 p-2 rounded-lg text-black"
+        className="md:hidden fixed top-4 left-4 z-50 bg-cyan-500 p-2 rounded-lg text-white"
       >
         <Menu />
       </button>
@@ -173,7 +173,7 @@ export default function DashboardLayout({ children }) {
 
             <button
               onClick={() => setOpen(false)}
-              className="md:hidden text-black"
+              className="md:hidden text-white"
             >
               <X />
             </button>
@@ -205,7 +205,7 @@ export default function DashboardLayout({ children }) {
 
                 ${
                   pathname === link.href
-                    ? "bg-cyan-500 text-black"
+                    ? "bg-cyan-500 text-white"
                     : "text-slate-300 hover:bg-slate-800"
                 }
 

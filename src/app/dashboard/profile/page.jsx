@@ -194,7 +194,7 @@ export default function Profile() {
 
                     <button
 
-                        className="btn btn-info text-black w-full"
+                        className="btn btn-info text-white w-full"
 
                     >
 

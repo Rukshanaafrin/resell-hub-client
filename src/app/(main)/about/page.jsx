@@ -10,7 +10,7 @@ export default function AboutPage() {
 
     return (
 
-        <section className="bg-[#0F172A] min-h-screen text-black">
+        <section className="bg-[#0F172A] min-h-screen text-white">
 
 
             {/* Hero */}
