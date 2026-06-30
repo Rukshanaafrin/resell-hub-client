@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function MyProducts() {
 
@@ -54,6 +55,9 @@ export default function MyProducts() {
 
 
   return (
+
+    <RoleRoute role="seller">
+
 
     <div>
 
@@ -225,6 +229,8 @@ export default function MyProducts() {
 
 
     </div>
+
+</RoleRoute>
 
   );
 

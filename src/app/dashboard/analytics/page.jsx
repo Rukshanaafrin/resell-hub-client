@@ -1,5 +1,7 @@
 "use client";
 
+import RoleRoute from "@/components/RoleRoute";
+
 import {
 
 BarChart,
@@ -78,7 +80,7 @@ export default function Analytics(){
 
 
 return(
-
+<RoleRoute role="admin">
 
 <div>
 
@@ -308,6 +310,8 @@ fill={COLORS[index]}
 
 
 </div>
+
+</RoleRoute>
 
 )
 

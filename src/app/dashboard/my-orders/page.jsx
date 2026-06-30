@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function MyOrders() {
 
@@ -65,6 +66,7 @@ export default function MyOrders() {
 
 
     return (
+<RoleRoute role="buyer">
 
         <div>
 
@@ -301,6 +303,7 @@ export default function MyOrders() {
 
         </div>
 
+</RoleRoute>
     );
 
 }

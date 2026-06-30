@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function PaymentHistory() {
 
@@ -19,6 +20,8 @@ fetch("https://resell-hub-server.onrender.com/payments")
 
 return(
 
+    <RoleRoute role="buyer">
+  
 <div>
 
 <h1 className="text-4xl font-bold mb-6">
@@ -151,7 +154,7 @@ ${payment.status==="Refunded" && "badge-error"}
 
 
 </div>
-
+</RoleRoute>
 )
 
 }

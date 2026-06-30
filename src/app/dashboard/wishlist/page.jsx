@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function Wishlist() {
 
@@ -79,7 +80,8 @@ export default function Wishlist() {
 
 
     return (
-
+<RoleRoute role="buyer">
+ 
 
         <div>
 
@@ -231,6 +233,7 @@ export default function Wishlist() {
 
         </div>
 
+</RoleRoute>
     );
 
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function ManageProducts() {
 
@@ -129,7 +130,7 @@ p=>p._id!==id
 
 
 return(
-
+<RoleRoute role="admin">
 
 
 <div>
@@ -383,7 +384,7 @@ Delete
 
 </div>
 
-
+</RoleRoute>
 
 )
 

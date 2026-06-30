@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
+import { useSession } from "@/lib/auth-client";
 
 import {
   Home,
@@ -28,98 +30,132 @@ export default function DashboardLayout({ children }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const links = [
-    {
-      name: "Home",
-      href: "/",
-      icon: <Home size={18} />,
-    },
+  const { data: session } = useSession();
 
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      fetch(
+        `https://resell-hub-server.onrender.com/users/${session.user.email}`
+      )
+        .then((res) => res.json())
+        .then((data) => setRole(data.role));
+    }
+  }, [session]);
+
+
+
+  const buyerLinks = [
     {
       name: "Dashboard",
       href: "/dashboard",
       icon: <LayoutDashboard size={18} />,
     },
-
     {
       name: "My Orders",
       href: "/dashboard/my-orders",
       icon: <ShoppingCart size={18} />,
     },
-
     {
       name: "Wishlist",
       href: "/dashboard/wishlist",
       icon: <Heart size={18} />,
     },
-
     {
       name: "Payment History",
       href: "/dashboard/payment-history",
       icon: <CreditCard size={18} />,
     },
-    
-
     {
       name: "Profile",
       href: "/dashboard/profile",
       icon: <User size={18} />,
     },
-
     {
       name: "Settings",
       href: "/dashboard/settings",
       icon: <Settings size={18} />,
     },
+  ];
 
+  const sellerLinks = [
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+      icon: <LayoutDashboard size={18} />,
+    },
     {
       name: "Add Product",
       href: "/dashboard/add-product",
       icon: <PlusCircle size={18} />,
     },
-
     {
       name: "My Products",
       href: "/dashboard/my-products",
       icon: <Package size={18} />,
     },
-
     {
       name: "Manage Orders",
       href: "/dashboard/manage-orders",
       icon: <Truck size={18} />,
     },
-
     {
-      name: "Admin Orders",
-      href: "/dashboard/admin-orders",
-      icon: <ClipboardList size={18} />,
+      name: "Sales",
+      href: "/dashboard/sales",
+      icon: <TrendingUp size={18} />,
     },
+    {
+      name: "Profile",
+      href: "/dashboard/profile",
+      icon: <User size={18} />,
+    },
+    {
+      name: "Settings",
+      href: "/dashboard/settings",
+      icon: <Settings size={18} />,
+    },
+  ];
 
+  const adminLinks = [
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+      icon: <LayoutDashboard size={18} />,
+    },
     {
       name: "Manage Users",
       href: "/dashboard/manage-users",
       icon: <Users size={18} />,
     },
-
     {
       name: "Manage Products",
       href: "/dashboard/manage-products",
       icon: <Boxes size={18} />,
     },
-
-     {
-      name: "Sales",
-      href: "/dashboard/sales",
-      icon: <TrendingUp size={18} />,
+    {
+      name: "Admin Orders",
+      href: "/dashboard/admin-orders",
+      icon: <ClipboardList size={18} />,
     },
-
-     {
+    {
       name: "Analytics",
       href: "/dashboard/analytics",
       icon: <BarChart3 size={18} />,
     },
+    {
+      name: "Profile",
+      href: "/dashboard/profile",
+      icon: <User size={18} />,
+    },
+    {
+      name: "Settings",
+      href: "/dashboard/settings",
+      icon: <Settings size={18} />,
+    },
   ];
+
+
 
   return (
     <div className="h-screen overflow-hidden bg-slate-100">
@@ -184,7 +220,12 @@ export default function DashboardLayout({ children }) {
 
           <div className="space-y-2">
 
-            {links.map((link) => (
+            {(role === "admin"
+              ? adminLinks
+              : role === "seller"
+                ? sellerLinks
+                : buyerLinks
+            ).map((link) => (
 
               <Link
                 key={link.href}
@@ -203,11 +244,10 @@ export default function DashboardLayout({ children }) {
                 transition-all
 
 
-                ${
-                  pathname === link.href
+                ${pathname === link.href
                     ? "bg-cyan-500 text-white"
                     : "text-slate-300 hover:bg-slate-800"
-                }
+                  }
 
               `}
               >

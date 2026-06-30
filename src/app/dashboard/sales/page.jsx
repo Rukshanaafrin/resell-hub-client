@@ -1,5 +1,7 @@
 "use client";
 
+import RoleRoute from "@/components/RoleRoute";
+
 import {
 BarChart,
 Bar,
@@ -86,6 +88,9 @@ sales:11
 
 
 return(
+
+    <RoleRoute role="seller">
+
 
 <div>
 
@@ -292,6 +297,8 @@ className="flex justify-between border-b py-3"
 
 
 </div>
+
+</RoleRoute>
 
 )
 
