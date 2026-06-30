@@ -29,9 +29,12 @@ export default function Navbar() {
 
     const pathname = usePathname();
 
-    const { data: session } = useSession();
+    const sessionData = useSession();
+     console.log("FULL:", sessionData);
 
-    console.log("SESSION:", session);
+    const { data: session } = useSession;
+
+   
 
 
     const [open, setOpen] = useState(false);
