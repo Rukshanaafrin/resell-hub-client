@@ -31,6 +31,8 @@ export default function Navbar() {
 
     const { data: session } = useSession();
 
+    console.log("SESSION:", session);
+
 
     const [open, setOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);

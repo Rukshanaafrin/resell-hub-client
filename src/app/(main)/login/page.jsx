@@ -32,6 +32,9 @@ export default function LoginPage() {
         email,
 
         password,
+        fetchOptions: {
+          credentials: "include"
+        },
 
       });
 
@@ -99,7 +102,7 @@ export default function LoginPage() {
 
         provider: "google",
 
-        // callbackURL: "https://resell-hub-client-blond.vercel.app",
+        callbackURL: "https://resell-hub-client-blond.vercel.app",
 
       });
 
