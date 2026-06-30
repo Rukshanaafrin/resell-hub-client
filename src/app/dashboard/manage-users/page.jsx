@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import RoleRoute from "@/components/RoleRoute";
 
 export default function ManageUsers() {
 
@@ -153,272 +154,273 @@ export default function ManageUsers() {
 
 
     return (
+        <RoleRoute role="admin">
 
-        <div>
-
-
-            <h1 className="text-3xl font-bold mb-6">
-
-                Manage Users
-
-            </h1>
+            <div>
 
 
+                <h1 className="text-3xl font-bold mb-6">
 
-            <input
+                    Manage Users
 
-                type="text"
-
-                placeholder="Search User"
-
-                value={search}
-
-                onChange={(e) =>
-
-                    setSearch(
-
-                        e.target.value
-
-                    )
-
-                }
-
-                className="input input-bordered w-full mb-5"
-
-            />
+                </h1>
 
 
 
-            <div className="bg-white p-4 rounded-xl shadow-lg overflow-x-auto">
+                <input
 
+                    type="text"
 
-                <table className="table">
+                    placeholder="Search User"
 
+                    value={search}
 
-                    <thead>
+                    onChange={(e) =>
 
-                        <tr>
+                        setSearch(
 
-                            <th>#</th>
+                            e.target.value
 
-                            <th>Name</th>
+                        )
 
-                            <th>Email</th>
+                    }
 
-                            <th>Status</th>
+                    className="input input-bordered w-full mb-5"
 
-                            <th>Action</th>
-
-                        </tr>
-
-                    </thead>
-
-
-
-                    <tbody>
+                />
 
 
 
-                        {
-
-                            filteredUsers.map(
-
-                                (user, index) => (
+                <div className="bg-white p-4 rounded-xl shadow-lg overflow-x-auto">
 
 
-                                    <tr key={user._id}>
+                    <table className="table">
 
 
-                                        <td>
+                        <thead>
 
-                                            {index + 1}
+                            <tr>
 
-                                        </td>
+                                <th>#</th>
 
+                                <th>Name</th>
 
+                                <th>Email</th>
 
-                                        <td>
+                                <th>Status</th>
 
-                                            {user.name}
+                                <th>Action</th>
 
-                                        </td>
+                            </tr>
 
-
-
-                                        <td>
-
-                                            {user.email}
-
-                                        </td>
+                        </thead>
 
 
 
-                                        <td>
+                        <tbody>
 
 
-                                            <span
 
-                                                className={`badge
+                            {
+
+                                filteredUsers.map(
+
+                                    (user, index) => (
+
+
+                                        <tr key={user._id}>
+
+
+                                            <td>
+
+                                                {index + 1}
+
+                                            </td>
+
+
+
+                                            <td>
+
+                                                {user.name}
+
+                                            </td>
+
+
+
+                                            <td>
+
+                                                {user.email}
+
+                                            </td>
+
+
+
+                                            <td>
+
+
+                                                <span
+
+                                                    className={`badge
 
                                                 ${user.status === "blocked"
 
-                                                        ?
+                                                            ?
 
-                                                        "badge-error"
+                                                            "badge-error"
 
-                                                        :
+                                                            :
 
-                                                        "badge-success"
+                                                            "badge-success"
 
-                                                    }
+                                                        }
 
                                                 `}
 
-                                            >
+                                                >
+
+
+                                                    {
+
+                                                        user.status ||
+
+                                                        "active"
+
+                                                    }
+
+
+                                                </span>
+
+
+                                            </td>
+
+
+
+
+                                            <td>
+
 
 
                                                 {
 
-                                                    user.status ||
+                                                    user.status === "blocked"
 
-                                                    "active"
+                                                        ?
+
+                                                        <button
+
+
+                                                            onClick={() =>
+
+                                                                handleStatus(
+
+                                                                    user._id,
+
+                                                                    "active"
+
+                                                                )
+
+                                                            }
+
+
+                                                            className="btn btn-xs btn-success mr-2"
+
+                                                        >
+
+
+                                                            Unblock
+
+
+                                                        </button>
+
+                                                        :
+
+                                                        <button
+
+
+                                                            onClick={() =>
+
+                                                                handleStatus(
+
+                                                                    user._id,
+
+                                                                    "blocked"
+
+                                                                )
+
+                                                            }
+
+
+                                                            className="btn btn-xs btn-warning mr-2"
+
+                                                        >
+
+
+                                                            Block
+
+
+                                                        </button>
+
 
                                                 }
 
 
-                                            </span>
 
 
-                                        </td>
+                                                <button
 
 
+                                                    onClick={() =>
 
+                                                        handleDelete(
 
-                                        <td>
+                                                            user._id
 
+                                                        )
 
+                                                    }
 
-                                            {
 
-                                                user.status === "blocked"
+                                                    className="btn btn-xs btn-error"
 
-                                                    ?
 
-                                                    <button
+                                                >
 
 
-                                                        onClick={() =>
+                                                    Delete
 
-                                                            handleStatus(
 
-                                                                user._id,
+                                                </button>
 
-                                                                "active"
 
-                                                            )
 
-                                                        }
+                                            </td>
 
 
-                                                        className="btn btn-xs btn-success mr-2"
 
-                                                    >
+                                        </tr>
 
-
-                                                        Unblock
-
-
-                                                    </button>
-
-                                                    :
-
-                                                    <button
-
-
-                                                        onClick={() =>
-
-                                                            handleStatus(
-
-                                                                user._id,
-
-                                                                "blocked"
-
-                                                            )
-
-                                                        }
-
-
-                                                        className="btn btn-xs btn-warning mr-2"
-
-                                                    >
-
-
-                                                        Block
-
-
-                                                    </button>
-
-
-                                            }
-
-
-
-
-                                            <button
-
-
-                                                onClick={() =>
-
-                                                    handleDelete(
-
-                                                        user._id
-
-                                                    )
-
-                                                }
-
-
-                                                className="btn btn-xs btn-error"
-
-
-                                            >
-
-
-                                                Delete
-
-
-                                            </button>
-
-
-
-                                        </td>
-
-
-
-                                    </tr>
+                                    )
 
                                 )
 
-                            )
-
-                        }
+                            }
 
 
 
-                    </tbody>
+                        </tbody>
 
 
 
-                </table>
+                    </table>
+
+
+
+                </div>
 
 
 
             </div>
-
-
-
-        </div>
-
+        </RoleRoute>
     );
 
 }

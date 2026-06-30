@@ -72,6 +72,8 @@ export default function LoginPage() {
 
         );
 
+        localStorage.setItem("email", email)
+
 
         alert("Login Successful");
 
