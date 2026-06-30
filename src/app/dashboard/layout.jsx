@@ -48,6 +48,11 @@ export default function DashboardLayout({ children }) {
 
   const buyerLinks = [
     {
+      name: "Home",
+      href: "/",
+      icon: <Home size={18} />,
+    },
+    {
       name: "Dashboard",
       href: "/dashboard",
       icon: <LayoutDashboard size={18} />,
@@ -80,6 +85,11 @@ export default function DashboardLayout({ children }) {
   ];
 
   const sellerLinks = [
+    {
+      name: "Home",
+      href: "/",
+      icon: <Home size={18} />,
+    },
     {
       name: "Dashboard",
       href: "/dashboard",
@@ -118,6 +128,11 @@ export default function DashboardLayout({ children }) {
   ];
 
   const adminLinks = [
+    {
+      name: "Home",
+      href: "/",
+      icon: <Home size={18} />,
+    },
     {
       name: "Dashboard",
       href: "/dashboard",
