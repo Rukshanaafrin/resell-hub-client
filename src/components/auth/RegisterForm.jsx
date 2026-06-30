@@ -44,6 +44,22 @@ export default function RegisterForm() {
         name,
       });
 
+
+      await fetch("https://resell-hub-server.onrender.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          location,
+          photo,
+          role: "buyer",
+          status: "active",
+        }),
+      });
+
       alert("Account Created Successfully");
 
       router.push("/");
@@ -59,25 +75,26 @@ export default function RegisterForm() {
   // Google signup
 
   const handleGoogleLogin = async () => {
- 
-     try {
- 
-       await authClient.signIn.social({
- 
-         provider: "google",
- 
-         callbackURL: "https://resell-hub-server.onrender.com",
- 
-       });
- 
-     } catch (error) {
- 
-       console.log(error);
-       alert("Google Login Failed");
- 
-     }
- 
-   };
+
+    try {
+
+      await authClient.signIn.social({
+
+        provider: "google",
+
+       
+         callbackURL: "https://resell-hub-client-blond.vercel.app",
+
+      });
+
+    } catch (error) {
+
+      console.log(error);
+      alert("Google Login Failed");
+
+    }
+
+  };
 
 
   return (
