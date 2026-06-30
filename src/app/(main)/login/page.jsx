@@ -27,16 +27,17 @@ export default function LoginPage() {
 
     try {
 
-      const res = await authClient.signIn.email({
-
-        email,
-
-        password,
-        fetchOptions: {
-          credentials: "include"
+      const res = await authClient.signIn.email(
+        {
+          email,
+          password,
         },
-
-      });
+        {
+          fetchOptions: {
+            credentials: "include",
+          },
+        }
+      );
 
 
       if (res) {
@@ -74,6 +75,7 @@ export default function LoginPage() {
 
         alert("Login Successful");
 
+        await authClient.getSession();
 
         router.push("/");
 
