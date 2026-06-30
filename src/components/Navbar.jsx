@@ -32,7 +32,7 @@ export default function Navbar() {
     const sessionData = useSession();
      console.log("FULL:", sessionData);
 
-    const { data: session } = useSession;
+    const { data: session } = useSession();
 
    
 

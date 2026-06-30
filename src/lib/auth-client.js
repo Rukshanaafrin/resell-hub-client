@@ -5,6 +5,10 @@ export const authClient = createAuthClient({
   // baseURL: "http://localhost:5000",
 
   baseURL:"https://resell-hub-server.onrender.com",
+
+  fetchOptions: {
+    credentials: "include",
+  }
 });
 
 export const {
