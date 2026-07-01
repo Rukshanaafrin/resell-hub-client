@@ -3,20 +3,31 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const client = new MongoClient(process.env.MONGO_DB_URI);
+
 const db = client.db(process.env.AUTH_DB_NAME);
 
 export const auth = betterAuth({
-    emailAndPassword: { 
-    enabled: true, 
+  baseURL: process.env.BETTER_AUTH_URL,
+
+  secret: process.env.BETTER_AUTH_SECRET,
+
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://resell-hub-client-blond.vercel.app",
+  ],
+
+  emailAndPassword: {
+    enabled: true,
   },
+
   socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID , 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
-        }, 
-    }, 
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
+
   database: mongodbAdapter(db, {
-    // Optional: if you don't provide a client, database transactions won't be enabled.
-    client
+    client,
   }),
 });
