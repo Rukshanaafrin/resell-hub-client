@@ -178,7 +178,7 @@ export default function ProductsPage() {
 
                     placeholder="Search Product"
 
-                    className="input input-bordered w-full"
+                    className="border input-bordered w-full dark:bg-zinc-800"
 
                     onChange={(e) =>
 
@@ -194,7 +194,7 @@ export default function ProductsPage() {
 
                 <select
 
-                    className="select select-bordered"
+                    className="border select-bordered"
 
                     onChange={(e) =>
 
@@ -252,7 +252,7 @@ export default function ProductsPage() {
 
                             key={product._id}
 
-                            className="card bg-base-100 shadow-xl"
+                            className="card shadow-xl "
 
                         >
 
@@ -276,7 +276,7 @@ export default function ProductsPage() {
 
 
 
-                            <div className="card-body">
+                            <div className="card-body dark:bg-black">
 
 
 

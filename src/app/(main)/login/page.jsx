@@ -32,6 +32,7 @@ export default function LoginPage() {
         {
           email,
           password,
+          callbackURL: "/"
         },
         {
           fetchOptions: {
@@ -39,7 +40,7 @@ export default function LoginPage() {
           },
         }
       );
-      
+
       console.log(res);
       const session = await authClient.getSession();
       console.log(session);
@@ -80,7 +81,7 @@ export default function LoginPage() {
         );
 
         localStorage.setItem("email", email)
-
+        setLoading(false);
 
         alert("Login Successful");
 
@@ -114,7 +115,7 @@ export default function LoginPage() {
 
         provider: "google",
 
-        callbackURL: "https://resell-hub-client-blond.vercel.app",
+        
 
       });
 
