@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased bg-background`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-gradient-to-br from-blue-100 to-violet-100 dark:bg-slate-900 transition-all duration-300">
+      <body className="min-h-full flex flex-col transition-all duration-300">
 
         <ThemeProvider>
 

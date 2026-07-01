@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
 import { Eye, EyeOff } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 
 export default function LoginPage() {
@@ -39,6 +39,12 @@ export default function LoginPage() {
           },
         }
       );
+      
+      console.log(res);
+      const session = await authClient.getSession();
+      console.log(session);
+
+
 
 
       if (res) {
@@ -80,6 +86,7 @@ export default function LoginPage() {
 
         await authClient.getSession();
 
+        router.refresh();
         router.push("/");
 
 
