@@ -50,37 +50,6 @@ export default function LoginPage() {
 
       if (res) {
 
-        // JWT Token Generate
-
-        const tokenRes = await fetch("https://resell-hub-server.onrender.com/jwt", {
-
-          method: "POST",
-
-          headers: {
-            "content-type": "application/json"
-          },
-
-          body: JSON.stringify({
-
-            email
-
-          })
-
-        })
-
-
-        const data = await tokenRes.json();
-
-
-        localStorage.setItem(
-
-          "access-token",
-
-          data.token
-
-        );
-
-        localStorage.setItem("email", email)
         setLoading(false);
 
         alert("Login Successful");
@@ -114,9 +83,7 @@ export default function LoginPage() {
       await authClient.signIn.social({
 
         provider: "google",
-
-        
-
+        callbackURL: "/"
       });
 
     } catch (error) {

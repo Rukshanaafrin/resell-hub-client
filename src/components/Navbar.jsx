@@ -29,17 +29,7 @@ export default function Navbar() {
 
     const pathname = usePathname();
 
-    const sessionData = useSession();
-    console.log("FULL:", sessionData);
-
     const { data: session } = useSession();
-
-    console.log("SESSION:", session);
-    console.log("USER:", session?.user);
-    console.log("LOADING:", sessionData.isPending);
-
-
-
 
     const [open, setOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);

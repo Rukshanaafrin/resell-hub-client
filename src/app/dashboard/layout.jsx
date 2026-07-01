@@ -34,15 +34,18 @@ export default function DashboardLayout({ children }) {
 
   const [role, setRole] = useState("");
 
-  useEffect(() => {
-    if (session?.user?.email) {
-      fetch(
-        `https://resell-hub-server.onrender.com/users/${session.user.email}`
-      )
-        .then((res) => res.json())
-        .then((data) => setRole(data.role));
-    }
-  }, [session]);
+useEffect(() => {
+  if (session?.user?.email) {
+    fetch(`https://resell-hub-server.onrender.com/users/${session.user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Fetched User:", data);
+        setRole(data.role);
+      });
+  }
+}, [session]);
+
+console.log(role);
 
 
 

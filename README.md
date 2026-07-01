@@ -19,7 +19,6 @@ Authentication
 - Email and Password Authentication
 - Google Authentication
 - Better Auth Integration
-- JWT Authentication
 - Protected Routes
 - Protected APIs
 
@@ -62,7 +61,6 @@ Home Page Features
 
 Challenge Features
 
-- JWT Verification
 - Advanced Search
 - Advanced Sorting
 - Pagination
@@ -76,7 +74,6 @@ Technologies Used
 - React
 - MongoDB
 - Better Auth
-- JWT
 - Tailwind CSS
 - DaisyUI
 - Framer Motion
