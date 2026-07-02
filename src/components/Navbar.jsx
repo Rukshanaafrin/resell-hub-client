@@ -173,7 +173,7 @@ export default function Navbar() {
 
                     {userRole === "admin" && (
                         <Link
-                            href="/dashboard/admin"
+                            href="/dashboard"
                             className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
                         >
                             <LayoutDashboard size={18} />
@@ -183,7 +183,7 @@ export default function Navbar() {
 
                     {userRole === "seller" && (
                         <Link
-                            href="/dashboard/seller"
+                            href="/dashboard"
                             className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
                         >
                             <LayoutDashboard size={18} />
@@ -193,7 +193,7 @@ export default function Navbar() {
 
                     {userRole === "buyer" && (
                         <Link
-                            href="/dashboard/buyer"
+                            href="/dashboard"
                             className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
                         >
                             <LayoutDashboard size={18} />
@@ -387,7 +387,7 @@ export default function Navbar() {
 
                                             {userRole === "admin" && (
                                                 <Link
-                                                    href="/dashboard/admin"
+                                                    href="/dashboard"
                                                     className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
                                                 >
                                                     <LayoutDashboard size={16} />
@@ -397,7 +397,7 @@ export default function Navbar() {
 
                                             {userRole === "seller" && (
                                                 <Link
-                                                    href="/dashboard/seller"
+                                                    href="/dashboard"
                                                     className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
                                                 >
                                                     <LayoutDashboard size={16} />
@@ -407,7 +407,7 @@ export default function Navbar() {
 
                                             {userRole === "buyer" && (
                                                 <Link
-                                                    href="/dashboard/buyer"
+                                                    href="/dashboard"
                                                     className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
                                                 >
                                                     <LayoutDashboard size={16} />
