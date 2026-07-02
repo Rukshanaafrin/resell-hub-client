@@ -36,15 +36,40 @@ export default function Navbar() {
 
     useEffect(() => {
         if (session?.user?.email) {
-            fetch(
-                `https://resell-hub-server.onrender.com/users/${session.user.email}`
-            )
-                .then((res) => res.json())
-                .then((data) => {
-                    setUserRole(data.role);
+
+            fetch(`https://resell-hub-server.onrender.com/users/${session.user.email}`)
+                .then(res => res.json())
+                .then(async (data) => {
+
+                    if (!data) {
+
+                        await fetch("https://resell-hub-server.onrender.com/users", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                name: session.user.name,
+                                email: session.user.email,
+                                photo: session.user.image,
+                                role: "buyer",
+                                status: "active",
+                            }),
+                        });
+
+                        setUserRole("buyer");
+
+                    } else {
+
+                        setUserRole(data.role);
+
+                    }
+
                 });
+
         }
     }, [session]);
+    
 
     const [open, setOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -561,8 +586,8 @@ export default function Navbar() {
                                 <Link
                                     href="/login"
                                     className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
-                                            ? "bg-purple-600 text-white"
-                                            : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        ? "bg-purple-600 text-white"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
                                         }`}
                                 >
                                     Login
@@ -571,8 +596,8 @@ export default function Navbar() {
                                 <Link
                                     href="/register"
                                     className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
-                                            ? "bg-purple-600 text-white"
-                                            : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        ? "bg-purple-600 text-white"
+                                        : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
                                         }`}
                                 >
                                     Register

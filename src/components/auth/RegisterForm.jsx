@@ -12,6 +12,8 @@ export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [role, setRole] = useState("buyer");
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -55,7 +57,7 @@ export default function RegisterForm() {
           email,
           location,
           photo,
-          role: "buyer",
+          role,
           status: "active",
         }),
       });
@@ -82,8 +84,8 @@ export default function RegisterForm() {
 
         provider: "google",
 
-       
-         callbackURL: "https://resell-hub-client-blond.vercel.app",
+
+        callbackURL: "https://resell-hub-client-blond.vercel.app",
 
       });
 
@@ -196,8 +198,14 @@ export default function RegisterForm() {
               className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
             />
 
-
-
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full h-10 px-3 rounded-xl bg-[#222232] border border-purple-500/20 text-white outline-none"
+            >
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+            </select>
 
 
             <div className="relative">
