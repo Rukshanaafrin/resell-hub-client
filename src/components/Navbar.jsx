@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Sun } from "lucide-react";
@@ -30,6 +30,20 @@ export default function Navbar() {
     const pathname = usePathname();
 
     const { data: session } = useSession();
+
+    const [userRole, setUserRole] = useState("");
+
+    useEffect(() => {
+        if (session?.user?.email) {
+            fetch(
+                `https://resell-hub-server.onrender.com/users/${session.user.email}`
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    setUserRole(data.role);
+                });
+        }
+    }, [session]);
 
     const [open, setOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
