@@ -31,6 +31,9 @@ export default function Navbar() {
 
     const { data: session } = useSession();
 
+    console.log(session);
+    console.log(userRole);
+
     const [userRole, setUserRole] = useState("");
 
     useEffect(() => {
