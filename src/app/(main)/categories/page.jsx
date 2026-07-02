@@ -35,8 +35,6 @@ export default function CategoriesPage() {
 
   };
 
-
-
   return (
 
     <section className="max-w-7xl mx-auto py-20 px-6">
