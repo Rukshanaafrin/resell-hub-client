@@ -47,7 +47,7 @@ export default function RegisterForm() {
       });
 
 
-      await fetch("https://resell-hub-server.onrender.com/users", {
+      const response = await fetch("https://resell-hub-server.onrender.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,6 +61,9 @@ export default function RegisterForm() {
           status: "active",
         }),
       });
+
+      const data = await response.json();
+      console.log("Server Response:", data);
 
       alert("Account Created Successfully");
 
