@@ -33,8 +33,6 @@ export default function Navbar() {
 
     const [userRole, setUserRole] = useState("");
 
-     console.log(session);
-     console.log(userRole);
 
     useEffect(() => {
         if (session?.user?.email) {
@@ -86,11 +84,11 @@ export default function Navbar() {
             icon: <Mail size={18} />,
         },
 
-        {
-            name: "Dashboard",
-            href: "/dashboard",
-            icon: <LayoutDashboard size={18} />,
-        },
+        // {
+        //     name: "Dashboard",
+        //     href: "/dashboard",
+        //     icon: <LayoutDashboard size={18} />,
+        // },
 
     ];
 
@@ -172,6 +170,36 @@ export default function Navbar() {
                         ))
 
                     }
+
+                    {userRole === "admin" && (
+                        <Link
+                            href="/dashboard/admin"
+                            className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
+                        >
+                            <LayoutDashboard size={18} />
+                            Dashboard
+                        </Link>
+                    )}
+
+                    {userRole === "seller" && (
+                        <Link
+                            href="/dashboard/seller"
+                            className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
+                        >
+                            <LayoutDashboard size={18} />
+                            Dashboard
+                        </Link>
+                    )}
+
+                    {userRole === "buyer" && (
+                        <Link
+                            href="/dashboard/buyer"
+                            className="flex items-center gap-2 text-gray-300 hover:text-purple-400"
+                        >
+                            <LayoutDashboard size={18} />
+                            Dashboard
+                        </Link>
+                    )}
 
                 </div>
 
@@ -357,19 +385,35 @@ export default function Navbar() {
 
 
 
-                                            <Link
+                                            {userRole === "admin" && (
+                                                <Link
+                                                    href="/dashboard/admin"
+                                                    className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                >
+                                                    <LayoutDashboard size={16} />
+                                                    Dashboard
+                                                </Link>
+                                            )}
 
-                                                href="/dashboard"
+                                            {userRole === "seller" && (
+                                                <Link
+                                                    href="/dashboard/seller"
+                                                    className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                >
+                                                    <LayoutDashboard size={16} />
+                                                    Dashboard
+                                                </Link>
+                                            )}
 
-                                                className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
-
-                                            >
-
-                                                <LayoutDashboard size={16} />
-
-                                                Dashboard
-
-                                            </Link>
+                                            {userRole === "buyer" && (
+                                                <Link
+                                                    href="/dashboard/buyer"
+                                                    className="flex items-center gap-2 px-4 py-3 hover:bg-slate-800 text-white"
+                                                >
+                                                    <LayoutDashboard size={16} />
+                                                    Dashboard
+                                                </Link>
+                                            )}
 
 
                                             <Link href="/dashboard/settings">
@@ -468,81 +512,78 @@ export default function Navbar() {
 
             {/* Mobile Drawer */}
 
+            {menuOpen && (
+                <div className="md:hidden bg-slate-900 px-5 pb-5">
 
-            {
+                    <div className="flex flex-col gap-4">
 
-                menuOpen && (
-
-
-                    <div className="md:hidden bg-slate-900 px-5 pb-5">
-
-
-
-                        <div className="flex flex-col gap-4">
-
-
-
-                            {
-
-                                links.map((link) => (
-
-
-                                    <Link
-
-                                        key={link.href}
-
-                                        href={link.href}
-
-                                        className="text-gray-300"
-
-
-                                    >
-
-                                        {link.name}
-
-                                    </Link>
-
-                                ))
-
-                            }
-
-
-
+                        {links.map((link) => (
                             <Link
-                                href="/login"
-                                className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
-                                    ? "bg-purple-600 text-white"
-                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
-                                    }
-                                    `}
+                                key={link.href}
+                                href={link.href}
+                                className="text-gray-300"
                             >
-                                Login
+                                {link.name}
                             </Link>
+                        ))}
 
-
-
+                        {/* Role Based Dashboard */}
+                        {userRole === "admin" && (
                             <Link
-                                href="/register"
-                                className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
-                                    ? "bg-purple-600 text-white"
-                                    : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
-                                    }
-                                    `}
+                                href="/dashboard/admin"
+                                className="text-gray-300"
                             >
-                                Register
+                                Dashboard
                             </Link>
+                        )}
 
+                        {userRole === "seller" && (
+                            <Link
+                                href="/dashboard/seller"
+                                className="text-gray-300"
+                            >
+                                Dashboard
+                            </Link>
+                        )}
 
+                        {userRole === "buyer" && (
+                            <Link
+                                href="/dashboard/buyer"
+                                className="text-gray-300"
+                            >
+                                Dashboard
+                            </Link>
+                        )}
 
-                        </div>
+                        {/* Login/Register */}
+                        {!session && (
+                            <>
+                                <Link
+                                    href="/login"
+                                    className={`px-4 py-2 rounded-xl transition ${pathname === "/login"
+                                            ? "bg-purple-600 text-white"
+                                            : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        }`}
+                                >
+                                    Login
+                                </Link>
 
+                                <Link
+                                    href="/register"
+                                    className={`px-4 py-2 rounded-xl transition ${pathname === "/register"
+                                            ? "bg-purple-600 text-white"
+                                            : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                                        }`}
+                                >
+                                    Register
+                                </Link>
+                            </>
+                        )}
 
                     </div>
 
-                )
-
-            }
-
+                </div>
+            )}
 
         </nav>
 
